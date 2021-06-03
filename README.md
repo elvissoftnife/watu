@@ -9,3 +9,8 @@ Correr el proyecto : npm start
 ## Icons
 
 https://fonts.google.com/icons
+
+## Colors
+
+Morado: #653EB3
+Rosa: #FB4381
