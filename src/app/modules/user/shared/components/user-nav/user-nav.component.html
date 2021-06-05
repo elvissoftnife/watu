@@ -1,2 +1,52 @@
-<p>user-nav works!</p>
-<app-user-profile></app-user-profile>
+<nav class="navbar navbar-expand-lg bg-color-nav">
+  <div class="container-fluid text-light">
+    <a class="navbar-brand nav-logo btn">Watu</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-light btn" aria-current="page"
+            >Perfil</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            [ngClass]="{ 'active-item': url === 'user/programs' }"
+            aria-current="page"
+            (click)="redirect('user/programs')"
+            >Programas</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            [ngClass]="{ 'active-item': url === 'user/myprograms' }"
+            aria-current="page"
+            (click)="redirect('user/myprograms')"
+            >Mis programas</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            aria-current="page"
+            [ngClass]="{ 'active-item': url === 'us' }"
+            (click)="redirect('/')"
+            >Cerrar sesion</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,2 +1,48 @@
-<p>security-nav works!</p>
-<app-security-login></app-security-login>
+<nav class="navbar navbar-expand-lg bg-color-nav">
+  <div class="container-fluid text-light">
+    <a class="navbar-brand nav-logo btn" (click)="redirect('/')">Watu</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-light btn" aria-current="page"
+            >Iniciar Sesion</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-light btn" aria-current="page"
+            >Registrarme</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            [ngClass]="{ 'active-item': url === 'services' }"
+            aria-current="page"
+            (click)="redirect('services')"
+            >Servicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            aria-current="page"
+            [ngClass]="{ 'active-item': url === 'us' }"
+            (click)="redirect('us')"
+            >Nosotros</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

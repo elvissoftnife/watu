@@ -1,0 +1,15 @@
+.bg-color-nav {
+  background-color: #653eb3;
+}
+
+.nav-logo {
+  font-size: 45px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.active-item {
+  font-weight: bold;
+  border-radius: 0px;
+}
