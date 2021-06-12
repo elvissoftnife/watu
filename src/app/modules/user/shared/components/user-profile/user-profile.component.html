@@ -17,39 +17,60 @@
         <span (click)="this.isActive = true">Cambiar contraseña</span>
       </div>
       <div class="modal-container__forgot-password" *ngIf="isActive">
-        <div class="modal-container__forgot-password__new-password">
+        <div
+          class="modal-container__forgot-password__new-password"
+          [formGroup]="passwordForm"
+        >
           <input
             type="password"
             class="form-control"
             placeholder="Nueva contraseña"
+            formControlName="password"
           />
         </div>
       </div>
       <div class="modal-container__personal-date" *ngIf="!isActive">
-        <div class="modal-container__personal-date__name">
-          <input type="text" class="form-control" placeholder="Nombre" />
+        <div
+          class="modal-container__personal-date__form"
+          [formGroup]="profileForm"
+        >
+          <div class="modal-container__personal-date__form__name">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              formControlName="nombre"
+            />
+          </div>
+          <br />
+          <div class="modal-container__personal-date__form__first-lastName">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Apellido Paterno"
+              formControlName="apellidoPaterno"
+            />
+          </div>
+          <br />
+          <div class="modal-container__personal-date__form__second-lastName">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Apellido Materno"
+              formControlName="apellidoMaterno"
+            />
+          </div>
+          <br />
+          <div class="modal-container__personal-date__form__phone">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Nro de cuenta"
+              formControlName="numeroCuenta"
+            />
+          </div>
+          <br />
         </div>
-        <br />
-        <div class="modal-container__personal-date__first-lastName">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Apellido Paterno"
-          />
-        </div>
-        <br />
-        <div class="modal-container__personal-date__second-lastName">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Apellido Materno"
-          />
-        </div>
-        <br />
-        <div class="modal-container__personal-date__phone">
-          <input type="number" class="form-control" placeholder="Celular" />
-        </div>
-        <br />
       </div>
     </div>
   </div>
