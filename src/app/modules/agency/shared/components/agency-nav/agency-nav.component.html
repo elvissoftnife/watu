@@ -1,1 +1,52 @@
-<p>agency-nav works!</p>
+<nav class="navbar navbar-expand-lg bg-color-nav">
+  <div class="container-fluid text-light">
+    <a class="navbar-brand nav-logo btn">Watu</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-light btn" aria-current="page"
+            >Perfil</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            [ngClass]="{ 'active-item': url === 'agency/programs' }"
+            aria-current="page"
+            (click)="redirect('agency/programs')"
+            >Programas</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            [ngClass]="{ 'active-item': url === 'user/inscriptions' }"
+            aria-current="page"
+            (click)="redirect('user/inscriptions')"
+            >Inscripciones</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light btn"
+            aria-current="page"
+            [ngClass]="{ 'active-item': url === 'us' }"
+            (click)="redirect('/')"
+            >Cerrar sesion</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
