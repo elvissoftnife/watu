@@ -1,0 +1,86 @@
+.material-icons-outlined {
+  color: #653eb3 !important;
+  height: 100px;
+}
+.modal-dialog {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.modal {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.material-icons-outlined {
+  font-size: 150px;
+}
+
+.modal-content {
+  height: 600px !important;
+
+  text-decoration: none !important;
+}
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body-container-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 68px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #585252;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: none;
+  padding: 0;
+}
+.modal-footer-button {
+  width: 244px;
+  height: 50px;
+  left: 598px;
+  top: 710px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fb4381;
+  border-radius: 5px;
+  color: #fff;
+  border-color: snow;
+}
+.modal-footer-button-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: medium;
+  font-size: 26px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  color: #fff4f4;
+}
+
+.desabilitar {
+  background: black !important;
+}
