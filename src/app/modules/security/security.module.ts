@@ -11,6 +11,7 @@ import { SecurityContainerComponent } from './shared/components/security-contain
 import { SecurityNavComponent } from './shared/components/security-nav/security-nav.component';
 import { SecurityFooterComponent } from './shared/components/security-footer/security-footer.component';
 import { SecurityLoginComponent } from './shared/components/security-login/security-login.component';
+import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SecurityLoginComponent } from './shared/components/security-login/secur
     SecurityNavComponent,
     SecurityFooterComponent,
     SecurityLoginComponent,
+    SecurityRegisterComponent,
   ],
   imports: [
     NgbModule,
