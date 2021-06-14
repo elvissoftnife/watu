@@ -1,2 +1,33 @@
-<p>programs works!</p>
+<br>
+
+<p>PROGRAMAS</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Ver</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">#Vacantes</th>
+    <th scope="col">#Inscritos</th>
+    <th scope="col">Acción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let programa of programas; index as i">
+    <td>
+        <a class="view" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe417;</i></a>
+    </td>
+    <td>    
+      {{ programa.nombre_programa }}
+    </td>
+    <td>{{ programa.vacantes | number }}</td>
+    <td>{{ programa.inscritos | number }}</td>
+    <td>
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
 <app-add-program-modal></app-add-program-modal>
