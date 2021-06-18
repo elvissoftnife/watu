@@ -12,6 +12,8 @@ import { UserContainerComponent } from './shared/components/user-container/user-
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { ProgramComponent } from './pages/programs/components/program/program.component';
 import { SearchComponent } from './pages/programs/components/search/search.component';
+import { ProgramDetailComponent } from './pages/program-detail/program-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SearchComponent } from './pages/programs/components/search/search.compo
     UserProfileComponent,
     ProgramComponent,
     SearchComponent,
+    ProgramDetailComponent,
   ],
   imports: [
     NgbModule,

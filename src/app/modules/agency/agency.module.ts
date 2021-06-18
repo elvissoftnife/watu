@@ -11,6 +11,9 @@ import { AgencyNavComponent } from './shared/components/agency-nav/agency-nav.co
 import { AgencyFooterComponent } from './shared/components/agency-footer/agency-footer.component';
 import { EditProgramModalComponent } from './pages/programs/components/edit-program-modal/edit-program-modal.component';
 import { AddProgramModalComponent } from './pages/programs/components/add-program-modal/add-program-modal.component';
+import { SedesComponent } from './pages/sedes/sedes.component';
+import { AddSedeModalComponent } from './pages/sedes/components/add-sede-modal/add-sede-modal.component';
+import { EditSedeModalComponent } from './pages/sedes/components/edit-sede-modal/edit-sede-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { AddProgramModalComponent } from './pages/programs/components/add-progra
     AgencyFooterComponent,
     EditProgramModalComponent,
     AddProgramModalComponent,
+    SedesComponent,
+    AddSedeModalComponent,
+    EditSedeModalComponent,
   ],
   imports: [
     NgbModule,

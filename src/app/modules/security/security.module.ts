@@ -12,6 +12,7 @@ import { SecurityNavComponent } from './shared/components/security-nav/security-
 import { SecurityFooterComponent } from './shared/components/security-footer/security-footer.component';
 import { SecurityLoginComponent } from './shared/components/security-login/security-login.component';
 import { ProgramComponent } from './pages/services/components/program/program.component';
+import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProgramComponent } from './pages/services/components/program/program.co
     SecurityNavComponent,
     SecurityFooterComponent,
     SecurityLoginComponent,
-    ProgramComponent
+    ProgramComponent,
+    SecurityRegisterComponent,
   ],
   imports: [
     NgbModule,
