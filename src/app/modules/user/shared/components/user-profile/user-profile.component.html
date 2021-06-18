@@ -39,7 +39,7 @@
               type="text"
               class="form-control"
               placeholder="Nombre"
-              formControlName="nombre"
+              formControlName="name"
             />
           </div>
           <br />
@@ -48,7 +48,7 @@
               type="text"
               class="form-control"
               placeholder="Apellido Paterno"
-              formControlName="apellidoPaterno"
+              formControlName="lastName"
             />
           </div>
           <br />
@@ -57,18 +57,10 @@
               type="text"
               class="form-control"
               placeholder="Apellido Materno"
-              formControlName="apellidoMaterno"
+              formControlName="motherLastName"
             />
           </div>
-          <br />
-          <div class="modal-container__personal-date__form__phone">
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Nro de cuenta"
-              formControlName="numeroCuenta"
-            />
-          </div>
+
           <br />
         </div>
       </div>
@@ -79,15 +71,19 @@
       <button
         type="button"
         class="footer-groups__left"
+        (click)="saveData()"
         (click)="modal.close()"
         style="margin-right: 10px"
       >
-        <label class="modal-footer-button-label"> Guardar </label>
+        <label class="modal-footer-button-label" style="cursor: pointer">
+          Guardar
+        </label>
       </button>
       <button
         type="button"
         class="footer-groups__right"
         (click)="modal.close()"
+        style="cursor: pointer"
       >
         <label class="modal-footer-button-label"> Cancelar </label>
       </button>

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { ServicesService } from '../../../pages/services/services.service';
 @Component({
   selector: 'app-security-login',
@@ -26,31 +27,32 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.open(this.contenido);
-    let modal = document.querySelector('.modal-dialog') as HTMLElement;
-    modal.style.height = '100%';
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    modal.style.marginTop = '0px';
-    modal.style.marginBottom = '0px';
   }
   ngOnInit(): void {}
   login() {
     const { email, password } = this.loginForm.value;
     this.servicesService.login(email, password).subscribe((response) => {
-      console.log('response', response);
       if (response == true) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Inicio de sesión exitoso',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         return;
       }
-      alert(response);
+      console.log(response);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: response,
+      });
     });
     this.modal.dismissAll();
   }
   isValid() {
     const { email, password } = this.loginForm.value;
-    console.log('email', email);
-    console.log('passowrd', password);
-
     if (email === '' || password === '') {
       return true;
     }
@@ -61,6 +63,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       backdrop: 'static',
       keyboard: true,
       size: '100',
+      centered: true,
     };
 
     this.modal.open(content, options);

@@ -1,0 +1,39 @@
+$pink: #fb4381;
+$white: #ffffff;
+.program-detail {
+  padding: 30px;
+  display: flex;
+  width: 100%;
+  &__left {
+    width: 45%;
+    h1 {
+      font-weight: bold;
+    }
+    p {
+      line-height: 35px;
+    }
+    &__button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        height: 60px;
+        font-size: 22px;
+        background-color: $pink;
+        color: $white;
+        border-color: transparent;
+        width: 220px;
+        border-radius: 8px;
+      }
+    }
+  }
+  &__right {
+    width: 55%;
+    &__background {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

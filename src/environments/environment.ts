@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://watu-backend.herokuapp.com',
+  apiUrl: 'https://api-watu.herokuapp.com',
 };
 
 /*
