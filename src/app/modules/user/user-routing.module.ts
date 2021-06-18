@@ -15,7 +15,7 @@ const routes: Routes = [
         component: MyprogramsComponent,
       },
       {
-        path: 'programs/:id',
+        path: 'programs/:id?',
         component: ProgramsComponent,
       },
       {
