@@ -1,0 +1,30 @@
+.servicios-info .row div {
+    text-align: center;
+}
+.servicios-info h3{
+    margin-bottom: 45px;
+}
+.img-servicio1 {
+    padding-top: 5px;
+}
+.img-servicio2 {
+    padding-top: 30px;
+}
+.img-servicio1 img {
+    height: 80 !important;
+    margin-bottom: 5px;
+}
+.img-servicio2 img {
+    height: 35 !important;
+    margin-bottom: 15px;
+}
+.img-servicio3 img {
+    height: 83 !important;
+    margin-bottom: 5px;
+}
+.servicios{
+    padding: 30px 15px;
+}
+.servicios-info {
+    margin-bottom: 60px;
+}

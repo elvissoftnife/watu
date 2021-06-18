@@ -10,6 +10,7 @@ import { SecurityContainerComponent } from './shared/components/security-contain
 import { SecurityNavComponent } from './shared/components/security-nav/security-nav.component';
 import { SecurityFooterComponent } from './shared/components/security-footer/security-footer.component';
 import { SecurityLoginComponent } from './shared/components/security-login/security-login.component';
+import { ProgramComponent } from './pages/services/components/program/program.component';
 import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SecurityNavComponent,
     SecurityFooterComponent,
     SecurityLoginComponent,
+    ProgramComponent,
     SecurityRegisterComponent,
   ],
   imports: [

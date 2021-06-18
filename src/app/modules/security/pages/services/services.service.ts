@@ -1,29 +1,35 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
+import { Program } from './interfaces/programas.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicesService {
-  constructor(private http: HttpClient) {}
+  private _programs: Program[] = [
+    //programs: Program[] = [
+    {
+      titulo: 'Nombre Programa',
+      descripcion:
+        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
+      urlImagen: 'assets/imgs/program.png',
+    },
+    {
+      titulo: 'Nombre Programa',
+      descripcion:
+        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
+      urlImagen: 'assets/imgs/program.png',
+    },
+    {
+      titulo: 'Nombre Programa',
+      descripcion:
+        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
+      urlImagen: 'assets/imgs/program.png',
+    },
+  ];
 
-  login(email: string, password: string): Observable<any> {
-    return this.http
-      .post(`${environment}/iniciar-sesion`, {
-        email,
-        password,
-      })
-      .pipe(
-        tap((jwt) => {
-          localStorage.setItem('token', jwt.toString());
-        }),
-        map(() => true),
-        catchError((err: HttpErrorResponse) => {
-          return of(err.error.mensaje);
-        })
-      );
+  get programs(): Program[] {
+    return [...this._programs];
   }
+
+  constructor() {}
 }

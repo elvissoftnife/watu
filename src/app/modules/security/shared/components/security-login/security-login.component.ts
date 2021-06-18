@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { ServicesService } from '../../../pages/services/services.service';
+import { SecurityLoginService } from './security-login.service';
 @Component({
   selector: 'app-security-login',
   templateUrl: './security-login.component.html',
@@ -16,7 +16,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     public modal: NgbModal,
-    private servicesService: ServicesService
+    private servicesService: SecurityLoginService
   ) {
     this.auth = new Observable();
     this.loginForm = this.fb.group({
