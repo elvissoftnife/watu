@@ -1,0 +1,98 @@
+$pink: #fb4381;
+$gray: #7a7a7a;
+$white: #ffffff;
+.modal-container {
+  &__title {
+    display: flex;
+    label {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 52px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: $gray;
+    }
+    span {
+      cursor: pointer;
+    }
+    p {
+      border: 1px solid #8f8f8f;
+      margin-left: 50px;
+      margin-right: 20px;
+    }
+    span {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 27px;
+      display: flex;
+      align-items: center;
+
+      color: $pink;
+    }
+  }
+  &__input {
+    margin-top: 20px;
+  }
+  &__personal-date {
+  }
+}
+.footer-groups {
+  display: flex;
+  justify-content: flex-end;
+  &__left {
+    background: $pink;
+    border-radius: 5px;
+    width: 160px;
+    color: $white;
+    font-size: 22px;
+    border-color: transparent;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+      margin: 0;
+    }
+  }
+  &__right {
+    width: 160px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: $gray;
+    border-color: transparent;
+    height: 50px;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    label {
+      margin: 0;
+    }
+  }
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+::ng-deep.modal-content {
+  height: 500px !important;
+}

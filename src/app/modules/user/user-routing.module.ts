@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MyprogramsComponent } from './pages/myprograms/myprograms.component';
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { UserContainerComponent } from './shared/components/user-container/user-container.component';
-import { ProgramDetailComponent	} from  './pages/program-detail/program-detail.component';
+import { ProgramDetailComponent } from './pages/program-detail/program-detail.component';
 
 const routes: Routes = [
   {
@@ -19,9 +19,9 @@ const routes: Routes = [
         component: ProgramsComponent,
       },
       {
-	path: 'programdetail/:id',
-	component: ProgramDetailComponent
-      }
+        path: 'programdetail/:id',
+        component: ProgramDetailComponent,
+      },
     ],
   },
 ];
