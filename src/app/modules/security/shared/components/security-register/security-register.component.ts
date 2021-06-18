@@ -27,7 +27,7 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-    this.open(this.contenido);
+    //this.open(this.contenido);
   }
   open(content: any) {
     let options: NgbModalOptions = {
@@ -56,7 +56,7 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Usuario logeado exitosamente',
+          title: 'Usuario registrado exitosamente',
           showConfirmButton: false,
           timer: 1500,
         });
