@@ -1,1 +1,31 @@
-<p>inscriptions works!</p>
+<br>
+
+<p>INSCRIPCIONES</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Programa</th>
+    <th scope="col">Nombres</th>
+    <th scope="col">Fecha</th>
+    <th scope="col">Ver</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let inscripcion of inscripciones; index as i">
+    
+    <td>    
+      {{ inscripcion.programa }}
+    </td>
+    <td>{{ inscripcion.nombres }}</td>
+    <td>{{ inscripcion.fecha | date }}</td>
+
+    <td>
+        <a class="view" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe417;</i></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<!--
+<app-add-program-modal></app-add-program-modal>
+-->
