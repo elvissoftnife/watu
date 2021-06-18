@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { SecurityLoginService } from './security-login.service';
 @Component({
   selector: 'app-security-login',
@@ -32,7 +33,12 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       if (response === true) {
         return;
       }
-      alert(response);
+      console.log(response);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: response,
+      });
     });
     this.modal.dismissAll();
   }
@@ -48,6 +54,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       backdrop: 'static',
       keyboard: true,
       size: '100',
+      centered: true,
     };
 
     this.modal.open(content, options);

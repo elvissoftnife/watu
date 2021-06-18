@@ -1,1 +1,32 @@
-<p>program-detail works!</p>
+<ng-container *ngIf="program$ | async as Program">
+  <div class="program-detail" *ngIf="(program$ | async) !== null; else isEmpty">
+    <div class="program-detail__left">
+      <h1>{{ Program.programas.nombre }}</h1>
+      <h2>{{ Program.programas.sede.agencia.nombre_agencia }}</h2>
+      <span>{{ Program.programas.sede.nombre }}</span>
+      <br />
+      <br />
+      <br />
+      <p style="margin-right: 30px">
+        {{ Program.programas.descripcion }}
+      </p>
+      <br />
+
+      <div class="program-detail__left__button">
+        <button (click)="signUp()">Inscribirme</button>
+      </div>
+    </div>
+    <div class="program-detail__right">
+      <div class="program-detail__right__background">
+        <img
+          src="https://images.unsplash.com/photo-1623716495270-48dd5004496e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+
+  <ng-template #isEmpty>
+    <p>Cargando...</p>
+  </ng-template>
+</ng-container>

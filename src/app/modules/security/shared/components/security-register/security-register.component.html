@@ -1,1 +1,62 @@
-<p>security-register works!</p>
+<ng-template #contenido let-modal>
+  <div class="registerForm" [formGroup]="registerForm">
+    <div class="modal-body">
+      <div class="modal-body-container">
+        <div class="title">
+          <label class="title__content">Registrate</label>
+        </div>
+        <br />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Nombres"
+          style="height: 50px"
+        />
+        <br />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="motherLastName"
+          placeholder="Apellido Materno"
+          style="height: 50px"
+        />
+        <br />
+        <input
+          type="password"
+          class="form-control"
+          formControlName="lastName"
+          placeholder="Apellido Paterno"
+          style="height: 50px"
+        />
+        <br />
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="email"
+          style="height: 50px"
+        />
+        <br />
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+          style="height: 50px"
+        />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="modal-footer-button"
+        (click)="registerUser()"
+      >
+        <label class="modal-footer-button-label"> Enviar </label>
+      </button>
+    </div>
+
+    <div style="height: 20px"></div>
+  </div>
+</ng-template>
