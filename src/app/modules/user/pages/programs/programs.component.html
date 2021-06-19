@@ -7,7 +7,7 @@
                 type="text" 
                 class="form-control" 
                 [(ngModel)]="paramsPrograms.programa" 
-                placeholder="Buscar..."
+                placeholder="Buscar programa..."
                 (change)="changeProgram()" />
         </div>
         <div class="col-12 col-md-5">
@@ -17,7 +17,7 @@
             </select>
         </div>
         <div class="col-12 col-md-5">
-            <select name="select" [(ngModel)]="paramsPrograms.body.id_sede" class="filtro-select" (change)="changeSede($event)">
+            <select name="select" [(ngModel)]="paramsPrograms.body.id_sede" class="filtro-select" (change)="changeSede()">
                 <option hidden selected value="0">Sede</option>
                 <option *ngFor="let sede of sedes.sedes" value={{sede.id}}>{{sede.nombre}}</option>
             </select>

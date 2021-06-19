@@ -19,8 +19,20 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <h3>PROGRAMAS</h3>
-        <app-program></app-program>
+    <div class="programas col-12">
+        <h3>PROGRAMAS MÁS RELEVANTES</h3>
+        <!--<app-program></app-program>-->
+        <div class="row">
+            <div *ngFor="let program of programs.lista_programas"  class="col-12 col-md-4">
+                <div class="card card-program">
+                    <img src="assets/imgs/program.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{program.nombre}}</h5>
+                      <p class="card-text">{{program.descripcion}}</p>
+                      <a href="#" class="btn btn-primary btn-program">Ver mas</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
     </div>
 </div>

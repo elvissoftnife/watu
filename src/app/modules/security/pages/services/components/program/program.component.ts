@@ -6,8 +6,11 @@ import { ServicesService } from '../../services.service';
   templateUrl: './program.component.html',
   styleUrls: ['./program.component.css']
 })
-export class ProgramComponent implements OnInit {
 
+export class ProgramComponent {
+//export class ProgramComponent implements OnInit {
+
+  /*
   programs:Program[] = [];
 
   constructor(private programService: ServicesService) {}
@@ -21,4 +24,5 @@ export class ProgramComponent implements OnInit {
     console.log("programs => ", this.programs);
     console.log("programs[0].nombre => ", this.programs[0].nombre);
   }
+  */
 }

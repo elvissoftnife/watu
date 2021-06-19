@@ -28,9 +28,6 @@ export class ProgramsComponent {
     sedes: Sede[]
   } = { sedes: [] }
 
-  idAgency: number = 0;
-  idSede: number = 0;
-
   constructor(private programService: ProgramsService) {}
 
   async ngOnInit(): Promise<void> {
@@ -40,17 +37,14 @@ export class ProgramsComponent {
 
   async getPrograms(){
     this.programs = await this.programService.getPrograms(this.paramsPrograms);
-    console.log("this.programs => ", this.programs);
   }
 
   async getAgencies(){
     this.agencies = await this.programService.getAgencies();
-    console.log("this.agencies => ", this.agencies);
   }
 
   async getSedes(idSede: number){
     this.sedes = await this.programService.getSedes(idSede);
-    console.log("this.sedes => ", this.sedes);
   }
 
   changeProgram(){
@@ -58,14 +52,12 @@ export class ProgramsComponent {
   }
 
   changeAgency(agencySelected:any){
-    console.log("agencySelected => ", agencySelected.target.value);
     let idAgency = agencySelected.target.value;
     this.getSedes(idAgency);
     this.getPrograms();
   }
 
-  changeSede(sedeSelected:any){
-    console.log("sedeSelected => ", sedeSelected.target.value);
+  changeSede(){
     this.getPrograms();
   }
   cleanFilters(){
