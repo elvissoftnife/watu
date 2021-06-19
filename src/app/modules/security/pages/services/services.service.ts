@@ -1,35 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Program } from './interfaces/programas.interface';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ParamsPrograms } from './interfaces/programas.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicesService {
-  private _programs: Program[] = [
-    //programs: Program[] = [
-    {
-      titulo: 'Nombre Programa',
-      descripcion:
-        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
-      urlImagen: 'assets/imgs/program.png',
-    },
-    {
-      titulo: 'Nombre Programa',
-      descripcion:
-        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
-      urlImagen: 'assets/imgs/program.png',
-    },
-    {
-      titulo: 'Nombre Programa',
-      descripcion:
-        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
-      urlImagen: 'assets/imgs/program.png',
-    },
-  ];
+  constructor(private http: HttpClient) {}
 
-  get programs(): Program[] {
-    return [...this._programs];
+  private _apiUrl = environment.apiUrl;
+
+  async getPrograms(paramsPrograms: ParamsPrograms): Promise<any> {
+
+    const url = this._apiUrl + "/programas?search=" + paramsPrograms.programa;
+    const httpHeaders = new HttpHeaders({ 'Content-Type':'application/json'}); 
+
+    return await this.http.post(url, paramsPrograms.body, { headers: httpHeaders}).toPromise();
   }
-
-  constructor() {}
 }
