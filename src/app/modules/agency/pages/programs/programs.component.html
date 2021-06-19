@@ -1,33 +1,49 @@
 <br>
 
-<p>PROGRAMAS</p>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">Ver</th>
-    <th scope="col">Nombre</th>
-    <th scope="col">#Vacantes</th>
-    <th scope="col">#Inscritos</th>
-    <th scope="col">Acción</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let programa of programas; index as i">
-    <td>
-        <a class="view" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe417;</i></a>
-    </td>
-    <td>    
-      {{ programa.nombre_programa }}
-    </td>
-    <td>{{ programa.vacantes | number }}</td>
-    <td>{{ programa.inscritos | number }}</td>
-    <td>
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="d-flex justify-content-end">
+  <div class="mr-auto p-2">PROGRAMAS</div>
+  <div class="p-2">
+    <app-add-program-modal></app-add-program-modal>
+  </div>
+</div>
 
-<app-add-program-modal></app-add-program-modal>
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ver</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">#Vacantes</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let programa of programas.lista_programas; index as i">
+        <td>
+          <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="See"><i class="material-icons">&#xe417;</i></button>
+        </td>
+        <td>
+          {{ programa.nombre}}
+        </td>
+        <td>{{ programa.descripcion}}</td>
+        <td>{{ programa.vacantes | number }}</td>
+        <td>
+          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="Edit"><i class="material-icons">&#xE254;</i></button>
+
+        </td>
+
+        <td>
+          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="Delete"><i class="material-icons">&#xE872;</i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
