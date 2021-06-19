@@ -1,1 +1,24 @@
-<p>myprograms works!</p>
+<div class="container">
+  <div class="row">
+    <p id="title">Mis programas:</p>
+  </div>
+  <div class="row">
+    <div *ngFor="let program of programs" class="col col-lg-4 col-md-6 col-sm-12 ">
+      <div class="card">
+          <img src="{{program.programa.sede.agencia.image}}" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{program.programa.nombre}}</h5>
+            <p class="card-text">{{program.programa.descripcion}}</p>
+            <div class="row"> 
+              <div class="col">
+                <a href="#" class="btn btn-eliminar">Eliminar</a>
+              </div>
+              <div class="col">
+                <a href="#" class="btn btn-mas">Ver más</a>
+              </div>  
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
