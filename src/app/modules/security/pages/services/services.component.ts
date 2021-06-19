@@ -29,15 +29,12 @@ export class ServicesComponent  {
 
   async getPrograms(){
     let allPrograms = await this.serviceService.getPrograms(this.paramsPrograms);
-    console.log("allPrograms => ", allPrograms.lista_programas);
-    console.log("allPrograms.length => ", allPrograms.lista_programas.length);
     if(allPrograms.lista_programas.length >= 4)
       this.programs.lista_programas = this.getSubArrayPrograms(allPrograms.lista_programas);
     else
       this.programs = allPrograms.lista_programas;
   }
   getSubArrayPrograms(listPrograms: Program[]):  Program[]{
-    console.log("lista => ", listPrograms);
     let list: Program[] = [];
     listPrograms.slice(0, 3).map((program) => {
       list.push(program);
