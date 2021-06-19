@@ -1,5 +1,8 @@
 export interface Program {
-    titulo: string;
-    descripcion: string;
-    urlImagen: string;
-  }
+  id: number;
+  nombre: string;
+  descripcion: string;
+  vacantes: number;
+  estado: number;
+  id_sede: number;
+}

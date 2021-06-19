@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ParamsPrograms } from './interfaces/programas.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgramsService {
 
-  private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  async getData(): Promise<any> {
+  private _apiUrl = environment.apiUrl;
 
-    let idUsuario = 2;
-    const url = this.apiUrl + '/vacantes/' + idUsuario;
+  async getPrograms(paramsPrograms: ParamsPrograms): Promise<any> {
+
+    const url = this._apiUrl + "/programas?search=" + paramsPrograms.programa;
     const httpHeaders = new HttpHeaders({ 'Content-Type':'application/json'}); 
 
-    console.log("url => ", url);
+    return await this.http.post(url, paramsPrograms.body, { headers: httpHeaders}).toPromise();
+  }
+
+  async getAgencies(): Promise<any> {
+
+    const url = this._apiUrl + "/agencias?search=";
+    const httpHeaders = new HttpHeaders({ 'Content-Type':'application/json'}); 
+
+    return await this.http.get(url, { headers: httpHeaders}).toPromise();
+  }
+
+  async getSedes(idSede:number): Promise<any> {
+
+    const url = this._apiUrl + "/sedes/" + idSede;
+    const httpHeaders = new HttpHeaders({ 'Content-Type':'application/json'}); 
 
     return await this.http.get(url, { headers: httpHeaders}).toPromise();
   }
