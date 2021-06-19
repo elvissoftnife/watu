@@ -1,63 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Program } from './interfaces/programas.interface';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgramsService {
 
-  private _programs: Program[] = [
-    //programs: Program[] = [
-      {
-          titulo: "Nombre Programa",
-          descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-          urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-      {
-        titulo: "Nombre Programa",
-        descripcion: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-        urlImagen: "assets/imgs/program.png"
-      },
-    ]
-  
-    get programs(): Program[]{
-      return [...this._programs];
-    }
+  private apiUrl = environment.apiUrl;
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  async getData(): Promise<any> {
+
+    let idUsuario = 2;
+    const url = this.apiUrl + '/vacantes/' + idUsuario;
+    const httpHeaders = new HttpHeaders({ 'Content-Type':'application/json'}); 
+
+    console.log("url => ", url);
+
+    return await this.http.get(url, { headers: httpHeaders}).toPromise();
+  }
+
 }
