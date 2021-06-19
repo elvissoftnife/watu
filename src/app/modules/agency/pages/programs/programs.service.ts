@@ -11,9 +11,8 @@ export class ProgramsService {
   constructor(private http: HttpClient) {}
 
   async getData(): Promise<any> {
-    const url = this.apiUrl + '/listar-programas';
-    //const url = 'https://gist.githubusercontent.com/Mantarraya/7491fcf97597d94dcf363f71a2e0e07d/raw/3429de90182276d9d25aced3c2ea43ca0094bd45/json';
-    console.log(url);
+    const url = 'https://api-watu.herokuapp.com/programas/agencia/5';
+    //const url = 'https://gist.githubusercontent.com/SinNick7/5cc1438f3b7edd6e236b3358e59e5b08/raw/16788302c8abbd79bc85474f0d05095f633836f3/test';
     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return await this.http.get(url, { headers: httpHeaders }).toPromise();
