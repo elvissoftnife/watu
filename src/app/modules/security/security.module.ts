@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ServicesComponent } from './pages/services/services.component';
@@ -11,6 +10,9 @@ import { SecurityContainerComponent } from './shared/components/security-contain
 import { SecurityNavComponent } from './shared/components/security-nav/security-nav.component';
 import { SecurityFooterComponent } from './shared/components/security-footer/security-footer.component';
 import { SecurityLoginComponent } from './shared/components/security-login/security-login.component';
+import { ProgramComponent } from './pages/services/components/program/program.component';
+import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { SecurityLoginComponent } from './shared/components/security-login/secur
     SecurityNavComponent,
     SecurityFooterComponent,
     SecurityLoginComponent,
+    ProgramComponent,
+    SecurityRegisterComponent,
   ],
   imports: [
     NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
     SecurityRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SecurityModule {}

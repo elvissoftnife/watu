@@ -8,9 +8,8 @@ describe('SecurityLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SecurityLoginComponent ]
-    })
-    .compileComponents();
+      declarations: [SecurityLoginComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -20,6 +19,9 @@ describe('SecurityLoginComponent', () => {
   });
 
   it('should create', () => {
+    fixture = TestBed.createComponent(SecurityLoginComponent);
+    component = fixture.componentInstance;
+
     expect(component).toBeTruthy();
   });
 });

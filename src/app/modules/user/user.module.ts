@@ -10,6 +10,10 @@ import { UserNavComponent } from './shared/components/user-nav/user-nav.componen
 import { UserFooterComponent } from './shared/components/user-footer/user-footer.component';
 import { UserContainerComponent } from './shared/components/user-container/user-container.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
+import { ProgramComponent } from './pages/programs/components/program/program.component';
+import { SearchComponent } from './pages/programs/components/search/search.component';
+import { ProgramDetailComponent } from './pages/program-detail/program-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { UserProfileComponent } from './shared/components/user-profile/user-prof
     UserFooterComponent,
     UserContainerComponent,
     UserProfileComponent,
+    ProgramComponent,
+    SearchComponent,
+    ProgramDetailComponent,
   ],
   imports: [
     NgbModule,
