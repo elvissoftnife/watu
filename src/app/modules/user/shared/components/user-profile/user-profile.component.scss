@@ -5,7 +5,6 @@ $white: #ffffff;
   &__title {
     display: flex;
     label {
-      font-family: Roboto;
       font-style: normal;
       font-weight: normal;
       font-size: 32px;
@@ -24,7 +23,6 @@ $white: #ffffff;
       margin-right: 20px;
     }
     span {
-      font-family: Roboto;
       font-style: normal;
       font-weight: normal;
       font-size: 15px;
@@ -61,7 +59,6 @@ $white: #ffffff;
   }
   &__right {
     width: 160px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 22px;

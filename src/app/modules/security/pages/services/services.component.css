@@ -41,3 +41,10 @@
     border-radius: 5px;
     padding: 5px 30px;
 }
+
+.proceso-titulo{
+  color:#FB4381;
+  font-weight:600;
+  margin-top:20px;
+  margin-bottom:20px;
+}
