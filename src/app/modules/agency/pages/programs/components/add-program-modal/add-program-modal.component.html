@@ -8,15 +8,24 @@
     <div class="modal-body">
       <form>
         <div class="form-group">
-          <label for="dateOfBirth">Programa</label>
+          <label for="nombrePrograma">Nombre</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" name="dp">            
+            <input id="nombrePrograma" class="form-control" name="dp">            
+          </div>
+          <label for="descPrograma">Descripción</label>
+          <div class="input-group">
+            <input id="descPrograma" class="form-control" name="dp">            
+          </div>
+          <label for="vacantesPrograma">#Vacantes</label>
+          <div class="input-group">
+            <input id="vacantesPrograma" class="form-control" name="dp">            
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancelar</button>
     </div>
   </ng-template>
   
