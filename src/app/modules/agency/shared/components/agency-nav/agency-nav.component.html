@@ -1,50 +1,26 @@
 <nav class="navbar navbar-expand-lg bg-color-nav">
   <div class="container-fluid text-light">
     <a class="navbar-brand nav-logo btn">Watu</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link active text-light btn" aria-current="page"
-            >Perfil</a
-          >
+          <a class="nav-link active text-light btn" aria-current="page">Perfil</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link active text-light btn"
-            [ngClass]="{ 'active-item': url === 'agency/programs' }"
-            aria-current="page"
-            (click)="redirect('agency/programs')"
-            >Programas</a
-          >
+          <a class="nav-link active text-light btn" [ngClass]="{ 'active-item': url === 'agency/sedes' }"
+            aria-current="page" (click)="redirect('agency/sedes')">Sedes</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link active text-light btn"
-            [ngClass]="{ 'active-item': url === 'agency/inscriptions' }"
-            aria-current="page"
-            (click)="redirect('agency/inscriptions')"
-            >Inscripciones</a
-          >
+          <a class="nav-link active text-light btn" [ngClass]="{ 'active-item': url === 'agency/inscriptions' }"
+            aria-current="page" (click)="redirect('agency/inscriptions')">Inscripciones</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link active text-light btn"
-            aria-current="page"
-            [ngClass]="{ 'active-item': url === 'us' }"
-            (click)="redirect('/')"
-            >Cerrar sesion</a
-          >
+          <a class="nav-link active text-light btn" aria-current="page" [ngClass]="{ 'active-item': url === 'us' }"
+            (click)="redirect('/')">Cerrar sesion</a>
         </li>
       </ul>
     </div>

@@ -14,6 +14,8 @@ import { AddProgramModalComponent } from './pages/programs/components/add-progra
 import { SedesComponent } from './pages/sedes/sedes.component';
 import { AddSedeModalComponent } from './pages/sedes/components/add-sede-modal/add-sede-modal.component';
 import { EditSedeModalComponent } from './pages/sedes/components/edit-sede-modal/edit-sede-modal.component';
+import { AgencyProfileComponent } from './shared/components/agency-profile/agency-profile.component';
+import { InscriptionsProgramComponent } from './pages/inscriptions-program/inscriptions-program.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { EditSedeModalComponent } from './pages/sedes/components/edit-sede-modal
     SedesComponent,
     AddSedeModalComponent,
     EditSedeModalComponent,
+    AgencyProfileComponent,
+    InscriptionsProgramComponent,
   ],
   imports: [
     NgbModule,

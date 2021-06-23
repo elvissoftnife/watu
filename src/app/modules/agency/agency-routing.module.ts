@@ -4,6 +4,7 @@ import { InscriptionsComponent } from './pages/inscriptions/inscriptions.compone
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { AgencyContainerComponent } from './shared/components/agency-container/agency-container.component';
 import { SedesComponent } from './pages/sedes/sedes.component'
+import { InscriptionsProgramComponent } from './pages/inscriptions-program/inscriptions-program.component';
 
 const routes: Routes = [
   {
@@ -15,12 +16,15 @@ const routes: Routes = [
         component: InscriptionsComponent,
       },
       {
-        path: 'programs',
-        component: ProgramsComponent,
+        path: 'sedes',
+        component: SedesComponent
       },
       {
-	path:'sedes',
-	component: SedesComponent
+        path: 'programs/:id',
+        component: ProgramsComponent,
+      }, {
+        path: 'inscriptionsprograms/:id',
+        component: InscriptionsProgramComponent
       }
     ],
   },
@@ -30,4 +34,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AgencyRoutingModule {}
+export class AgencyRoutingModule { }
