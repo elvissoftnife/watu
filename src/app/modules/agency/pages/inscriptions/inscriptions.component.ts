@@ -1,34 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { InscriptionsService } from './inscriptions.service';
 
-interface Inscripcion {
-  programa: string;
-  nombres: string;
-  fecha: Date;
+export interface Inscripcion {
+  id: number;
+  estado: number;
+  programa: Programa;
 }
 
-const INSCRIPCIONES: Inscripcion[] = [
-  {
-    programa: 'Work and Travel 1',
-    nombres: 'Carlitos Unnoc',
-    fecha: new Date(1478708162000)
-  },
-  {
-    programa: 'Work and Travel 2',
-    nombres: 'Carlitos Unnoc',
-    fecha: new Date(1478708162000)
-  },
-  {
-    programa: 'Work and Travel 3',
-    nombres: 'Carlitos Unnoc',
-    fecha: new Date(1478708162000)
-  },
-  {
-    programa: 'Work and Travel 4',
-    nombres: 'Carlitos Unnoc',
-    fecha: new Date(1478708162000)
-  }
-];
+export interface Programa {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  sede: Sede;
+}
+
+export interface Sede {
+  id: number;
+  nombre: string;
+  agencia: Agencia;
+}
+
+export interface Agencia {
+  id: number;
+  nombre_agencia: string;
+  image: string;
+}
+
+export interface User {
+  id: number;
+  nombre: string;
+  apellido_paterno: string;
+  apellido_materno: string;
+  email: string;
+}
 
 @Component({
   selector: 'app-inscriptions',
@@ -38,14 +42,21 @@ const INSCRIPCIONES: Inscripcion[] = [
 
 export class InscriptionsComponent implements OnInit {
 
+  inscripciones: {
+    reservas: Inscripcion[]
+  } = { reservas: [] };
+
   constructor(
     private inscripcion: InscriptionsService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    const data = await this.inscripcion.getData(); 
-    console.log(data);
+    await this.obtenerDataInscripciones();
   }
 
-  inscripciones = INSCRIPCIONES;
+  async obtenerDataInscripciones() {
+    this.inscripciones = await this.inscripcion.getData();
+    console.log(this.inscripciones);
+  }
+
 }

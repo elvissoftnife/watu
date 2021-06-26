@@ -1,1 +1,37 @@
-<p>edit-program-modal works!</p>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar Programa</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group edit-program">
+          <label for="nombrePrograma">Nombre</label>
+          <div class="input-group">
+            <input id="nombrePrograma" class="form-control" name="dp">            
+          </div>
+          <label for="descPrograma">Descripción</label>
+          <div class="input-group">
+            <input id="descPrograma" class="form-control" name="dp">            
+          </div>
+          <label for="vacantesPrograma">#Vacantes</label>
+          <div class="input-group">
+            <input id="vacantesPrograma" class="form-control" name="dp">            
+          </div>
+          <label for="vacantesPrograma">#Inscritos</label>
+          <div class="input-group">
+            <input id="vacantesPrograma" class="form-control" name="dp">            
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancelar</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-success btn-sm rounded-0" (click)="open(content)" type="button" data-toggle="tooltip" data-placement="top"
+            title="Edit"><i class="material-icons">&#xE254;</i></button>

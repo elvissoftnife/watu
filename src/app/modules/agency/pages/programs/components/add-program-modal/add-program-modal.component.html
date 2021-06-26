@@ -1,32 +1,49 @@
 <ng-template #content let-modal>
+
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Nuevo Programa</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
     <div class="modal-body">
-      <form>
-        <div class="form-group">
+      <form (ngSubmit)="onSubmit()" id="addProgramForm" autocomplete="off" [formGroup]="addProgramForm">
+        <div class="add-program">
           <label for="nombrePrograma">Nombre</label>
           <div class="input-group">
-            <input id="nombrePrograma" class="form-control" name="dp">            
+            <input id="nombrePrograma" type="text" class="form-control" formControlName="nombre">            
           </div>
+          <span class="form-text text-danger" *ngIf="campoEsValido('nombre')">
+            El nombre es requerido
+          </span>
+        </div>
+        <div class="add-program">
           <label for="descPrograma">Descripción</label>
           <div class="input-group">
-            <input id="descPrograma" class="form-control" name="dp">            
+            <input id="descPrograma" type="text" class="form-control" formControlName="descripcion">            
           </div>
+          <span class="form-text text-danger" *ngIf="campoEsValido('descripcion')">
+            La descripción es requerido
+          </span>
+        </div>
+        <div class="add-program">
           <label for="vacantesPrograma">#Vacantes</label>
           <div class="input-group">
-            <input id="vacantesPrograma" class="form-control" name="dp">            
+            <input id="vacantesPrograma" type="number" class="form-control" formControlName="vacantes">            
           </div>
+          <span class="form-text text-danger" *ngIf="campoEsValido('vacantes')">
+            La cantidad de vacantes debe ser 0 o mayor
+          </span>
         </div>
       </form>
     </div>
+
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+      <button type="submit" form="addProgramForm" class="btn btn-outline-dark">Guardar</button>
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancelar</button>
     </div>
+
   </ng-template>
   
   <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Nuevo Programa</button>
