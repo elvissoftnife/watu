@@ -2,24 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramsService } from './programs.service';
 
 export interface Programa {
-  id:          number;
-  nombre:      string;
+  id: number;
+  nombre: string;
   descripcion: string;
-  vacantes:    number;
-  estado:      number;
-  id_sede:     number;
-  sede:        Sede;
+  vacantes: number;
+  inscritos: number;
+  estado: number;
+  id_sede: number;
+  sede: Sede;
 }
 
 export interface Sede {
-  id:       number;
-  nombre:   string;
+  id: number;
+  nombre: string;
   distrito: string;
-  agencia:  Agencia;
+  agencia: Agencia;
 }
 
 export interface Agencia {
-  id:             number;
+  id: number;
   nombre_agencia: string;
 }
 
@@ -32,9 +33,9 @@ export interface Agencia {
 export class ProgramsComponent implements OnInit {
 
 
-  programas:{
+  programas: {
     lista_programas: Programa[]
-  } = { lista_programas: []};
+  } = { lista_programas: [] };
 
   constructor(
     private programa: ProgramsService
@@ -44,9 +45,9 @@ export class ProgramsComponent implements OnInit {
     await this.obtenerDataPrograma();
   }
 
-  async obtenerDataPrograma(){
+  async obtenerDataPrograma() {
     this.programas = await this.programa.getData();
     console.log(this.programas)
   }
-  
+
 }
