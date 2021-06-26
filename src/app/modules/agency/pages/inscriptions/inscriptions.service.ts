@@ -11,8 +11,7 @@ export class InscriptionsService {
   constructor(private http: HttpClient) {}
 
   async getData(): Promise<any> {
-    const url = this.apiUrl + '/listar-inscripciones';
-    console.log(url);
+    const url = 'https://api-watu.herokuapp.com/vacantes/51';
     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return await this.http.get(url, { headers: httpHeaders }).toPromise();
