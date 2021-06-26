@@ -21,15 +21,15 @@ export class ProgramsComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    //await this.obtenerDataPrograma();
+    await this.obtenerDataPrograma();
   }
 
-  /*
+  
   async obtenerDataPrograma(){
     await this.programService.LoadPrograms();
     //this.programas = this.programService.programas;
     console.log(this.programas)
   }
-  */
+
   
 }

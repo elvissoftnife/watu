@@ -15,7 +15,7 @@ export class ProgramsService {
   private _programas: Programa[] = [];
 
   get programas(): Programa[]{
-    this.LoadPrograms();
+    //this.LoadPrograms();
     return [...this._programas];
   }
 

@@ -54,6 +54,7 @@ export class AddProgramModalComponent {
 
     console.log(this.addProgramForm.value);
     await this.programService.createProgram(this.addProgramForm.value);
+    await this.programService.LoadPrograms();
 
     this.addProgramForm.reset();
     this.modal.close();
