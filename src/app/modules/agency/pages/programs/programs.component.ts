@@ -1,29 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramsService } from './programs.service';
-
-export interface Programa {
-  id:          number;
-  nombre:      string;
-  descripcion: string;
-  vacantes:    number;
-  inscritos:   number;
-  estado:      number;
-  id_sede:     number;
-  sede:        Sede;
-}
-
-export interface Sede {
-  id:       number;
-  nombre:   string;
-  distrito: string;
-  agencia:  Agencia;
-}
-
-export interface Agencia {
-  id:             number;
-  nombre_agencia: string;
-}
-
+import { Programa } from './interfaces/programas.interface';
 @Component({
   selector: 'app-programs',
   templateUrl: './programs.component.html',
@@ -33,21 +10,26 @@ export interface Agencia {
 export class ProgramsComponent implements OnInit {
 
 
-  programas:{
-    lista_programas: Programa[]
-  } = { lista_programas: []};
+  //programas: Programa[] = [];
+
+  get programas() {
+    return this.programService.programas;
+  }
 
   constructor(
-    private programa: ProgramsService
+    private programService: ProgramsService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.obtenerDataPrograma();
+    //await this.obtenerDataPrograma();
   }
 
+  /*
   async obtenerDataPrograma(){
-    this.programas = await this.programa.getData();
+    await this.programService.LoadPrograms();
+    //this.programas = this.programService.programas;
     console.log(this.programas)
   }
+  */
   
 }

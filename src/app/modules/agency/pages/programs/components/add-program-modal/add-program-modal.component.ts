@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProgramsService } from '../../programs.service';
-import { BodyCreateProgram } from '../../interfaces/programas.interface';
 
 @Component({
   selector: 'app-add-program-modal',
@@ -17,17 +16,15 @@ export class AddProgramModalComponent {
     nombre: [ , Validators.required ,   ],
     descripcion: [ , Validators.required, ],
     vacantes: [ , [ Validators.required, Validators.min(0)] ],
-    inscritos: [ , [ Validators.required, Validators.min(0)] ],
   });
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder,  private program: ProgramsService) {}
+  constructor(private modalService: NgbModal, private fb: FormBuilder,  private programService: ProgramsService) {}
 
   ngOnInit() {
     this.addProgramForm.reset({
       nombre: '',
       descripcion: '',
       vacantes: null,
-      inscritos: null,
     })
   }
 
@@ -56,7 +53,7 @@ export class AddProgramModalComponent {
     }
 
     console.log(this.addProgramForm.value);
-    await this.program.createProgram(this.addProgramForm.value);
+    await this.programService.createProgram(this.addProgramForm.value);
 
     this.addProgramForm.reset();
     this.modal.close();
