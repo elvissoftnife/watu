@@ -31,6 +31,11 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
     const { email, password } = this.loginForm.value;
     this.servicesService.login(email, password).subscribe((response) => {
       if (response === true) {
+        Swal.fire({
+          icon: 'success',
+          title: 'success',
+          text: 'Iniciado sesión correctamente',
+        });
         return;
       }
       console.log(response);
