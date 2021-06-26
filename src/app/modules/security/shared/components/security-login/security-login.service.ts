@@ -7,11 +7,11 @@ import { Observable, of, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class SecurityLoginService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
     return this.http
-      .post(`${environment}/iniciar-sesion`, {
+      .post(`${environment.apiUrl}/iniciar-sesion`, {
         email,
         password,
       })
