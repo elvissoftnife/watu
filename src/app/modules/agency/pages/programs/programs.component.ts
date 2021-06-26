@@ -6,6 +6,7 @@ export interface Programa {
   nombre:      string;
   descripcion: string;
   vacantes:    number;
+  inscritos:   number;
   estado:      number;
   id_sede:     number;
   sede:        Sede;

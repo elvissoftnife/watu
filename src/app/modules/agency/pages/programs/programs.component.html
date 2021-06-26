@@ -16,8 +16,9 @@
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
         <th scope="col">#Vacantes</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col">#Inscritos</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
       </tr>
     </thead>
     <tbody>
@@ -31,10 +32,11 @@
         </td>
         <td>{{ programa.descripcion}}</td>
         <td>{{ programa.vacantes | number }}</td>
+        <td>{{ programa.inscritos | number }}</td>
         <td>
-          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="Edit"><i class="material-icons">&#xE254;</i></button>
-
+          <!--<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="Edit"><i class="material-icons">&#xE254;</i></button>-->
+            <app-edit-program-modal></app-edit-program-modal>
         </td>
 
         <td>
