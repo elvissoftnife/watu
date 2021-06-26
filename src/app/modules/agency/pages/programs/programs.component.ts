@@ -24,12 +24,12 @@ export class ProgramsComponent implements OnInit {
     await this.obtenerDataPrograma();
   }
 
-  
-  async obtenerDataPrograma(){
+
+  async obtenerDataPrograma() {
     await this.programService.LoadPrograms();
     //this.programas = this.programService.programas;
     console.log(this.programas)
   }
 
-  
+
 }
