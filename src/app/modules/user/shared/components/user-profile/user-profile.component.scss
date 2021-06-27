@@ -25,18 +25,17 @@ $white: #ffffff;
     span {
       font-style: normal;
       font-weight: normal;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 27px;
       display: flex;
       align-items: center;
 
       color: $pink;
+      font-weight: 500;
     }
   }
   &__input {
     margin-top: 20px;
-  }
-  &__personal-date {
   }
 }
 .footer-groups {
