@@ -6,3 +6,8 @@
     margin-bottom: 15px;
     font-weight:600;
 }
+
+.btn-enviar{
+    background-color: #FB4381;
+    color: white;
+}

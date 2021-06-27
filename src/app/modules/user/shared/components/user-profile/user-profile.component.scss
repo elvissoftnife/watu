@@ -90,7 +90,7 @@ $white: #ffffff;
   border-top: none;
 }
 
-::ng-deep.modal-content {
+:host ::ng-deep.modal-content {
   height: 500px !important;
 }
 
