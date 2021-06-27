@@ -13,7 +13,7 @@ export class MyprogramsComponent implements OnInit {
   ngOnInit(): void {
     async function getPrograms(){
       try{
-        const response = await fetch('https://api-watu.herokuapp.com/vacantes/51');
+        const response = await fetch(`https://api-watu.herokuapp.com/vacantes/${localStorage.getItem("userId")}`);
         return response.json();
       }catch(err){
         console.log(err);
@@ -24,7 +24,7 @@ export class MyprogramsComponent implements OnInit {
       this.programs=data.reservas});
   }
 
-  deleteProgram(event:any):void{
+  deleteProgram(event:any, id:number){
     Swal.fire({
       title: 'Seguro que quieres desinscribirte?',
       text: "Se eliminará la inscripción a la agencia.",
@@ -35,6 +35,10 @@ export class MyprogramsComponent implements OnInit {
       confirmButtonText: 'Sí, desinscribirse'
     }).then((result) => {
       if (result.isConfirmed) {
+        fetch(`${id}`,{
+          method: 'POST',
+          mode:'cors',
+          cache: 'no-cache'}).then().catch(err=>console.log(err));
         Swal.fire(
           'Desinscrito!',
           'El programa ha sido removido.',
