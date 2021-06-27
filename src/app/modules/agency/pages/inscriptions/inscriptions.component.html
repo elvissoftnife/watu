@@ -16,13 +16,14 @@
       <tr>
         <th scope="col">Ver</th>
         <th scope="col">Programa</th>
-        <th scope="col">Nombre</th>
+        <th scope="col">Inscrito</th>
+        <th scope="col">Fecha</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let inscripcion of inscripciones.reservas; index as i">
+      <tr *ngFor="let inscripcion of inscripciones; index as i">
         <td>
           <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
             title="See"><i class="material-icons">&#xe417;</i></button>
@@ -30,7 +31,12 @@
         <td>
           {{ inscripcion.programa.nombre }}
         </td>
-        <td> Carlos </td>
+        <td>
+          {{ inscripcion.usuario.nombre + ' ' + inscripcion.usuario.apellido_paterno + ' ' + inscripcion.usuario.apellido_materno }}
+        </td>
+        <td>
+          {{ inscripcion.fecha_reserva }}
+        </td>
         <td>
           <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
             title="Edit"><i class="material-icons">&#xE254;</i></button>
