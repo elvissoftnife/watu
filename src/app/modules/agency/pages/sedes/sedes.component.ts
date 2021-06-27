@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SedesService } from './sedes.services';
 
 @Component({
   selector: 'app-sedes',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SedesComponent implements OnInit {
 
-  constructor() { }
+  get sedes() {
+    return this.sedeService.sedes;
+  }
 
-  ngOnInit(): void {
+  constructor(
+    private sedeService: SedesService
+  ) { }
+
+  async ngOnInit(): Promise<void> {
+    await this.obtenerDataSede();
+  }
+
+  async obtenerDataSede() {
+    await this.sedeService.LoadSedes();
   }
 
 }

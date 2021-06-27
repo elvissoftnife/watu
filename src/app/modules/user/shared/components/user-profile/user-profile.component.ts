@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ServicesService } from 'src/app/modules/security/pages/services/services.service';
 import Swal from 'sweetalert2';
+import { UserProfileService } from './user-profile.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -17,7 +18,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   constructor(
     public modal: NgbModal,
     private fb: FormBuilder,
-    private servicesService: ServicesService
+    private userProfileService: UserProfileService
   ) {
     this.isActive = false;
     this.profileForm = this.fb.group({
@@ -30,12 +31,18 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-    //this.open(this.contenido);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   openForm() {
     this.isActive = true;
+  }
+
+  changePassword() {
+    const { email } = this.passwordForm.value;
+    this.userProfileService
+      .sendEmailToRecoverPassword(email)
+      .subscribe((resp) => console.log('resp', resp));
   }
   saveData() {
     console.log('save data');
@@ -46,31 +53,31 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       apellido_paterno: lastName,
       apellido_materno: motherLastName,
     };
-    //this.servicesService
-    //  .update(request, userId.toString())
-    //  .subscribe((resp) => {
-    //    if (resp == true) {
-    //      Swal.fire({
-    //        position: 'center',
-    //        icon: 'success',
-    //        title: 'Datos actualizados correctamente',
-    //        showConfirmButton: false,
-    //        timer: 1500,
-    //      });
-    //      return;
-    //    }
-    //    Swal.fire({
-    //      icon: 'error',
-    //      title: 'Error',
-    //      text: 'Error al actualizar al usuario',
-    //    });
-    //  });
+    this.userProfileService
+      .updateUserProfile(request, userId.toString())
+      .subscribe((resp) => {
+        if (resp == true) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Datos actualizados correctamente',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          return;
+        }
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al actualizar al usuario',
+        });
+      });
   }
   open(content: any) {
     let options: NgbModalOptions = {
       backdrop: 'static',
       keyboard: true,
-      size: '100',
+      size: 'lg',
       centered: true,
     };
 

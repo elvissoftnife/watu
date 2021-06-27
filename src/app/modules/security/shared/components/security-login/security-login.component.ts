@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -10,37 +11,47 @@ import { SecurityLoginService } from './security-login.service';
   styleUrls: ['./security-login.component.css'],
 })
 export class SecurityLoginComponent implements OnInit, AfterViewInit {
-  auth: Observable<any>;
   loginForm: FormGroup;
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
     private fb: FormBuilder,
     public modal: NgbModal,
-    private servicesService: SecurityLoginService
+    private servicesService: SecurityLoginService,
+    private router: Router
   ) {
-    this.auth = new Observable();
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: ['juan.tomairo@unmsm.edu.pe', [Validators.required, Validators.email]],
+      password: ['juan.tomairo', [Validators.required]],
     });
   }
-  ngAfterViewInit(): void {}
-  ngOnInit(): void {}
-  public login(): void {
-    const { email, password } = this.loginForm.value;
-    this.servicesService.login(email, password).subscribe((response) => {
-      if (response === true) {
-        return;
+  ngAfterViewInit(): void { }
+  ngOnInit(): void { }
+  public async login(): Promise<void> {
+
+    try {
+      const { email, password } = this.loginForm.value;
+      const data = await this.servicesService.login(email, password);
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("rol", data.usuario.roleId)
+      localStorage.setItem("userId", data.usuario.id)
+
+      if (data.usuario.roleId === 1) {
+        this.router.navigateByUrl("user/programs/50")
+      } else {
+        this.router.navigateByUrl("agency/programs/50")
       }
-      console.log(response);
+      this.modal.dismissAll();
+    } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: response,
+        text: "Usuario no encontrado",
       });
-    });
-    this.modal.dismissAll();
+    }
+
+
   }
   public isValid(): boolean {
     const { email, password } = this.loginForm.value;
@@ -53,7 +64,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
     const options: NgbModalOptions = {
       backdrop: 'static',
       keyboard: true,
-      size: '100',
+      size: 'sm',
       centered: true,
     };
 

@@ -1,14 +1,69 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <h3 class="titulo">NOSOTROS</h3>
-            <p>WATU es una empresa que se encarga de conectar a estudiantes o profesionales, directamente con las agencias que ofrecen puestos de trabajo en centros de labores en los Estados Unidos de Norteamérica (“EEUU”) o a través de las organizaciones Sponsor, realizando las coordinaciones para obtener ofertas de trabajo, entre ambos: Agencias de intercambio cultural y estudiantes o profesionales interesados en participar en los programas como Work and Travel, Internship, Training y más. </p>
-            <p>WATU actualmente lidera en Perú como intermediario entre agencias de intercambio cultural y estudiantes/profesionales. Asi que, no te pierdas que seguro hay un programa hecho a tu medida y tu presupuesto, manejamos las mejores ofertas que podemos ofrecer. </p>
-            <p>Nos motiva la pasión por los viajes y el crecimiento personal de todos los agentes involucrados. Brindamos un sistema que ofrezca experiencias nuevas de trabajo a estudiantes y profesionales en Estados Unidos.
-            </p>
-        </div>
-        <div class="col-12 col-md-6">
-            <img src="assets/imgs/us.jpeg" class="img-fluid" alt="Responsive image">
-        </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <h3 class="titulo">NOSOTROS</h3>
+      <p>
+        WATU es una empresa que se encarga de conectar a estudiantes o
+        profesionales, directamente con las agencias que ofrecen puestos de
+        trabajo en centros de labores en los Estados Unidos de Norteamérica
+        (“EEUU”) o a través de las organizaciones Sponsor, realizando las
+        coordinaciones para obtener ofertas de trabajo, entre ambos: Agencias de
+        intercambio cultural y estudiantes o profesionales interesados en
+        participar en los programas como Work and Travel, Internship, Training y
+        más.
+      </p>
+      <p>
+        WATU actualmente lidera en Perú como intermediario entre agencias de
+        intercambio cultural y estudiantes/profesionales. Asi que, no te pierdas
+        que seguro hay un programa hecho a tu medida y tu presupuesto, manejamos
+        las mejores ofertas que podemos ofrecer.
+      </p>
+      <p>
+        Nos motiva la pasión por los viajes y el crecimiento personal de todos
+        los agentes involucrados. Brindamos un sistema que ofrezca experiencias
+        nuevas de trabajo a estudiantes y profesionales en Estados Unidos.
+      </p>
     </div>
+    <div class="col-12 col-md-6">
+      <img src="assets/imgs/us.jpeg" class="img-fluid" alt="Responsive image" />
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h3 class="titulo">Escribenos</h3>
+  </div>
+
+  <div class="row mb-4" [formGroup]="form">
+    <div class="col-md-6">
+      <label for="exampleFormControlInput1" class="form-label">Asunto</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Asunto"
+        formControlName="asunto"
+      />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Correo</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="name@example.com"
+        formControlName="correo"
+      />
+    </div>
+    <div class="col-12 mt-3">
+      <label class="form-label">Mensaje</label>
+      <textarea
+        formControlName="mensaje"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="col-23 mt-2 text-end">
+      <button class="btn btn-enviar">
+        <span>Enviar </span>
+      </button>
+    </div>
+  </div>
 </div>

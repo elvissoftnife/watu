@@ -15,11 +15,11 @@ export class UserNavComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private servicio: UserNavService
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
-    const data = await this.servicio.getData();
-    console.log(data);
+    //const data = await this.servicio.getData();
+    //console.log(data);
   }
 
   public redirect(url: string): void {
