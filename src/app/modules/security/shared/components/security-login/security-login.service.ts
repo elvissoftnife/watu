@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class SecurityLoginService {
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http
@@ -17,9 +17,18 @@ export class SecurityLoginService {
         password,
       })
       .pipe(
-        tap((jwt) => {
-          localStorage.setItem('token', jwt.toString());
-          this.router.navigateByUrl("user/programs/50")
+        tap((resp: any) => {
+          localStorage.setItem('token', resp.token.toString());
+          console.log(resp.usuario);
+          const userProfile = {
+            id: resp.usuario.id,
+            name: resp.usuario.nombre,
+            lastName: resp.usuario.apellido_paterno,
+            lastNameMother: resp.usuario.apellido_materno,
+          };
+
+          localStorage.setItem('user', JSON.stringify(userProfile));
+          this.router.navigateByUrl('user/programs/50');
         }),
         map(() => true),
         catchError((err: HttpErrorResponse) => {
