@@ -44,7 +44,7 @@ export class ProgramsComponent implements OnInit {
       if (result.isConfirmed) {
 
         fetch(`https://api-watu.herokuapp.com/programa/delete/${id}`,{
-          method: 'POST',
+          method: 'DELETE',
           mode:'cors',
           cache: 'no-cache'}).then().catch(err=>console.log(err));
         Swal.fire(

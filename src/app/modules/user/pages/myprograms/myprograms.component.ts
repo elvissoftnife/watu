@@ -35,15 +35,16 @@ export class MyprogramsComponent implements OnInit {
       confirmButtonText: 'Sí, desinscribirse'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${id}`,{
-          method: 'POST',
+        fetch(`https://api-watu.herokuapp.com/vacantes/${id}`,{
+          method: 'DELETE',
           mode:'cors',
-          cache: 'no-cache'}).then().catch(err=>console.log(err));
-        Swal.fire(
-          'Desinscrito!',
-          'El programa ha sido removido.',
-          'success'
-        )
+          cache: 'no-cache'}).then(response=>{
+            Swal.fire(
+              'Desinscrito!',
+              'El programa ha sido removido.',
+              'success'
+            )
+          }).catch(err=>console.log(err));
       }
     })
   }
