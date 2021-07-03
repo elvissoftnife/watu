@@ -14,7 +14,16 @@
     />
   </head>
   <body>
+    <div id="montoCulqi">3500</div>
+    <div id="tokenCulqi"></div>
+
+    <div id="buyButton">Culqi</div>
+    <div id="buyButton2">Culqi</div>
+
+    <div id="avisarToken">Avisar token</div>
+
     <app-root></app-root>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -25,5 +34,45 @@
       integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://checkout.culqi.com/js/v3"></script>
+    <script>
+      // Configura tu llave pública
+      Culqi.publicKey = "pk_test_82ce590a4ae78c21";
+
+      // Usa la funcion Culqi.open() en el evento que desees
+      document
+        .getElementById("buyButton")
+        .addEventListener("click", function (e) {
+          // Configura tu Culqi Checkout
+          Culqi.settings({
+            title: "Culqi Store",
+            currency: "PEN",
+            description: "Polo Culqi lover",
+            amount: parseInt(document.getElementById("montoCulqi").innerHTML),
+          });
+
+          // Abre el formulario con las opciones de Culqi.settings
+          Culqi.open();
+          e.preventDefault();
+        });
+
+      function culqi() {
+        if (Culqi.token) {
+          // ¡Objeto Token creado exitosamente!
+          var token = Culqi.token.id;
+          //alert("Se ha creado un token:" + token);
+          document.getElementById("tokenCulqi").innerHTML = token;
+          document.getElementById("avisarToken").click();
+          //En esta linea de codigo debemos enviar el "Culqi.token.id"
+          //hacia tu servidor con Ajax
+        } else {
+          // ¡Hubo algún problema!
+          // Mostramos JSON de objeto error en consola
+          console.log(Culqi.error);
+          alert(Culqi.error.user_message);
+        }
+      }
+    </script>
   </body>
 </html>
