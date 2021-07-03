@@ -38,6 +38,13 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       localStorage.setItem("userId", data.usuario.id)
 
       if (data.usuario.roleId === 1) {
+        const userProfile = {
+          id: data.usuario.id,
+          name: data.usuario.nombre,
+          lastName: data.usuario.apellido_paterno,
+          lastNameMother: data.usuario.apellido_materno,
+        };
+        localStorage.setItem('user', JSON.stringify(userProfile));
         this.router.navigateByUrl("user/programs/50")
       } else {
         this.router.navigateByUrl("agency/programs/50")
