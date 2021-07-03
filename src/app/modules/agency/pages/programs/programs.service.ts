@@ -30,11 +30,11 @@ export class ProgramsService {
     this._programas = this.programsJson.lista_programas;
   }
 
-  async createProgram(bodyCreateProgram: BodyCreateProgram): Promise<void> {
+  async createProgram(bodyCreateProgram: FormData): Promise<void> {
     let idUser = 1;
     const url = 'https://api-watu.herokuapp.com/programa/crear/' + idUser;
-    const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const httpHeaders = new HttpHeaders({  });
 
-    await this.http.post(url, bodyCreateProgram, { headers: httpHeaders }).toPromise();
+    await this.http.post<any>(url, bodyCreateProgram, { headers: httpHeaders }).toPromise();
   }
 }

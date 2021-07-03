@@ -24,5 +24,6 @@ export interface BodyCreateProgram {
   nombre: string,
   descripcion: string,
   vacantes: number,
+  image: any 
 }
 
