@@ -19,4 +19,12 @@ export class ProgramDetailService {
 
     return await this.http.get(url, { headers: httpHeaders }).toPromise();
   }
+
+  async inscribirmePrograma(programaId: number): Promise<any> {
+    const userId = localStorage.getItem("userId");
+    const url = this._apiUrl + "/vacante/reserva/" + userId;
+    const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return await this.http.post(url, { id_programa: programaId }, { headers: httpHeaders }).toPromise();
+  }
 }

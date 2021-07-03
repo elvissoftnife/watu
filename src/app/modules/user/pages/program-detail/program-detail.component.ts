@@ -36,8 +36,17 @@ export class ProgramDetailComponent implements OnInit {
       cancelButtonText: 'No',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
+        try {
+          const resp = await this.servicesService.inscribirmePrograma(+this.id);
+          Swal.fire('Inscrito', 'Felicidades fuiste inscrito al programa', 'success');
+          console.log(resp);
+        } catch (error: any) {
+          Swal.fire('Cancelled', error.error.mensaje, 'error');
+
+        }
+
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
