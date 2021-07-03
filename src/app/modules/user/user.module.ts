@@ -13,6 +13,7 @@ import { ProgramComponent } from './pages/programs/components/program/program.co
 import { SearchComponent } from './pages/programs/components/search/search.component';
 import { ProgramDetailComponent } from './pages/program-detail/program-detail.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserProfileComponent } from './shared/components/user-profile/user-prof
     ReactiveFormsModule,
     CommonModule,
     UserRoutingModule,
+    NgxSpinnerModule,
   ],
 })
-export class UserModule {}
+export class UserModule { }

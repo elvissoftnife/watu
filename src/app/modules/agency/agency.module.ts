@@ -16,6 +16,7 @@ import { AddSedeModalComponent } from './pages/sedes/components/add-sede-modal/a
 import { EditSedeModalComponent } from './pages/sedes/components/edit-sede-modal/edit-sede-modal.component';
 import { AgencyProfileComponent } from './shared/components/agency-profile/agency-profile.component';
 import { InscriptionsProgramComponent } from './pages/inscriptions-program/inscriptions-program.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { InscriptionsProgramComponent } from './pages/inscriptions-program/inscr
     ReactiveFormsModule,
     CommonModule,
     AgencyRoutingModule,
+    NgxSpinnerModule,
   ],
 })
-export class AgencyModule {}
+export class AgencyModule { }
