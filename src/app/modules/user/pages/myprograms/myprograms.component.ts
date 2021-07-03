@@ -1,30 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { MyprogramsService } from './myprograms.service';
 @Component({
   selector: 'app-myprograms',
   templateUrl: './myprograms.component.html',
   styleUrls: ['./myprograms.component.css']
 })
 export class MyprogramsComponent implements OnInit {
-  programs: any[]=[];
-  constructor() { 
+  programs: any[] = [];
+  constructor(private service: MyprogramsService) {
 
   }
-  ngOnInit(): void {
-    async function getPrograms(){
-      try{
-        const response = await fetch(`https://api-watu.herokuapp.com/vacantes/${localStorage.getItem("userId")}`);
-        return response.json();
-      }catch(err){
-        console.log(err);
-      }
+
+  async ngOnInit(): Promise<void> {
+    await this.getData();
+  }
+
+  async getData() {
+    try {
+      const response: any = await this.service.getMyPrograms();
+      console.log(response);
+
+      this.programs = response.reservas
+    } catch (err) {
+      console.log(err);
     }
-    getPrograms().then(data=>{
-      
-      this.programs=data.reservas});
   }
 
-  deleteProgram(event:any, id:number){
+  async deleteProgram(event: any, id: number) {
     Swal.fire({
       title: 'Seguro que quieres desinscribirte?',
       text: "Se eliminará la inscripción a la agencia.",
@@ -35,16 +38,18 @@ export class MyprogramsComponent implements OnInit {
       confirmButtonText: 'Sí, desinscribirse'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://api-watu.herokuapp.com/vacantes/${id}`,{
+        fetch(`https://api-watu.herokuapp.com/vacantes/${id}`, {
           method: 'DELETE',
-          mode:'cors',
-          cache: 'no-cache'}).then(response=>{
-            Swal.fire(
-              'Desinscrito!',
-              'El programa ha sido removido.',
-              'success'
-            )
-          }).catch(err=>console.log(err));
+          mode: 'cors',
+          cache: 'no-cache'
+        }).then(async response => {
+          await this.getData();
+          Swal.fire(
+            'Desinscrito!',
+            'El programa ha sido removido.',
+            'success'
+          )
+        }).catch(err => console.log(err));
       }
     })
   }
