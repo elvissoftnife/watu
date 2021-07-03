@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProgramsService } from '../../programs.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-program-modal',
@@ -11,11 +12,13 @@ import { ProgramsService } from '../../programs.service';
 export class AddProgramModalComponent {
 
   modal!: NgbModalRef;
+  formData = new FormData();
 
   addProgramForm: FormGroup = this.fb.group({
     nombre: [ , Validators.required ,   ],
     descripcion: [ , Validators.required, ],
     vacantes: [ , [ Validators.required, Validators.min(0)] ],
+    imagen: [ , Validators.required, ],
   });
 
   constructor(private modalService: NgbModal, private fb: FormBuilder,  private programService: ProgramsService) {}
@@ -25,7 +28,8 @@ export class AddProgramModalComponent {
       nombre: '',
       descripcion: '',
       vacantes: null,
-    })
+      imagen: ['']
+    });
   }
 
   campoEsValido( campo: string ) {
@@ -47,13 +51,18 @@ export class AddProgramModalComponent {
   }
 
   async onSubmit() {
+    console.log("body => ", this.addProgramForm.value);
     if ( this.addProgramForm.invalid )  {
       this.addProgramForm.markAllAsTouched();
       return;
     }
 
-    console.log(this.addProgramForm.value);
-    await this.programService.createProgram(this.addProgramForm.value);
+    this.formData.append('nombre', this.addProgramForm.value.nombre);
+    this.formData.append('descripcion', this.addProgramForm.value.descripcion);
+    this.formData.append('vacantes', this.addProgramForm.value.vacantes);
+
+    console.log("payload => ", this.formData);
+    await this.programService.createProgram(this.formData);
     await this.programService.LoadPrograms();
 
     this.addProgramForm.reset();
@@ -68,6 +77,13 @@ export class AddProgramModalComponent {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
+    }
+  }
+
+  onFileSelect(event:any){
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.formData.append('image', file);
     }
   }
 
