@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AddProgramModalComponent {
 
   modal!: NgbModalRef;
-  formData = new FormData();
+  formData!:FormData;
 
   addProgramForm: FormGroup = this.fb.group({
     nombre: [ , Validators.required ,   ],
@@ -51,6 +51,7 @@ export class AddProgramModalComponent {
   }
 
   async onSubmit() {
+    this.formData = new FormData();
     console.log("body => ", this.addProgramForm.value);
     if ( this.addProgramForm.invalid )  {
       this.addProgramForm.markAllAsTouched();
@@ -60,6 +61,7 @@ export class AddProgramModalComponent {
     this.formData.append('nombre', this.addProgramForm.value.nombre);
     this.formData.append('descripcion', this.addProgramForm.value.descripcion);
     this.formData.append('vacantes', this.addProgramForm.value.vacantes);
+    this.formData.append('image', this.addProgramForm.value.imagen);
 
     console.log("payload => ", this.formData);
     await this.programService.createProgram(this.formData);
@@ -81,9 +83,14 @@ export class AddProgramModalComponent {
   }
 
   onFileSelect(event:any){
+      
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.formData.append('image', file);
+      this.addProgramForm.value.imagen = file;
+      console.log("imagen => ", this.addProgramForm.value.imagen);
+      console.log("imagen valid => ", this.addProgramForm.value.imagen.valid);
+    }else{
+      this.addProgramForm.value.imagen.valid = false;
     }
   }
 
