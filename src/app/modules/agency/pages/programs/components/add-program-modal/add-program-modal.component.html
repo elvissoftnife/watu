@@ -36,6 +36,15 @@
             La cantidad de vacantes debe ser 0 o mayor
           </span>
         </div>
+        <div class="add-program">
+          <label for="imagenPrograma">Imagen de programa</label>
+          <div class="input-group">
+            <input id="imagenPrograma" type="file" class="form-control" (change)="onFileSelect($event)" formControlName="imagen">            
+          </div>
+          <span class="form-text text-danger" *ngIf="campoEsValido('imagen')">
+            La imagen es requerida
+          </span>
+        </div>
       </form>
     </div>
 

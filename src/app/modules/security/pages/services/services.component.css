@@ -48,3 +48,14 @@
   margin-top:20px;
   margin-bottom:20px;
 }
+
+.programas .card-program p {
+    display: -webkit-box;
+    /* max-width: 400px; */
+    height: 110px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.625;
+}

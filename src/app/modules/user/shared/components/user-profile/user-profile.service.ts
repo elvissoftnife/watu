@@ -22,6 +22,28 @@ export class UserProfileService {
     );
   }
 
+  changePasswordUser(
+    oldPassword: string,
+    newPassword: string,
+    repeatPassword: string,
+    userID: string
+  ) {
+    return this.http
+      .put(`${environment.apiUrl}/password/${userID}`, {
+        nuevo_password: newPassword,
+        antiguo_password: oldPassword,
+        repetir_password: repeatPassword,
+      })
+      .pipe(
+        tap((val) => console.log('val', val)),
+        map((_) => true),
+        catchError((err) => {
+          console.log('eerr', err);
+          return of(false);
+        })
+      );
+  }
+
   sendEmailToRecoverPassword(email: String) {
     return this.http
       .post(`${environment.apiUrl}/reset/password`, {

@@ -14,9 +14,7 @@ $white: #ffffff;
       cursor: pointer;
       color: $gray;
     }
-    span {
-      cursor: pointer;
-    }
+
     p {
       border: 1px solid #8f8f8f;
       margin-left: 50px;
@@ -29,8 +27,9 @@ $white: #ffffff;
       line-height: 27px;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
-      color: $pink;
+      // color: $pink;
       font-weight: 500;
     }
   }
@@ -44,7 +43,7 @@ $white: #ffffff;
   &__left {
     background: $pink;
     border-radius: 5px;
-    width: 160px;
+    width: 260px;
     color: $white;
     font-size: 22px;
     border-color: transparent;
@@ -95,4 +94,11 @@ $white: #ffffff;
 
 .form-control {
   height: 50px !important;
+}
+
+.active {
+  color: $pink !important;
+}
+.inactive {
+  color: grey !important;
 }

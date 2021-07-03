@@ -27,25 +27,58 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       motherLastName: ['', [Validators.required]],
     });
     this.passwordForm = this.fb.group({
-      password: ['', [Validators.required]],
+      oldPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required]],
+      repeatPassword: ['', [Validators.required]],
     });
   }
   ngAfterViewInit(): void {
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const profile = JSON.parse(localStorage.getItem('user') || '');
+    console.log(profile);
+
+    this.profileForm.patchValue({
+      name: profile.name,
+      lastName: profile.lastName,
+      motherLastName: profile.lastNameMother,
+    });
+    console.log(profile.name);
+  }
   openForm() {
     this.isActive = true;
   }
 
   changePassword() {
-    const { email } = this.passwordForm.value;
+    const profile = JSON.parse(localStorage.getItem('user') || '');
+    const userID = profile.id;
+    const { oldPassword, newPassword, repeatPassword } =
+      this.passwordForm.value;
     this.userProfileService
-      .sendEmailToRecoverPassword(email)
-      .subscribe((resp) => console.log('resp', resp));
+      .changePasswordUser(oldPassword, newPassword, repeatPassword, userID)
+      .subscribe((resp) => {
+        if (resp) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Contraseña actualizada correctamente',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          return;
+        }
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        return;
+      });
   }
   saveData() {
-    console.log('save data');
     const { name, lastName, motherLastName } = this.profileForm.value;
     const userId = localStorage.getItem('idUser') || '';
     const request = {

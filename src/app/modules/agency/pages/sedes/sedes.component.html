@@ -1,56 +1,53 @@
 <div class="container agency-programs">
+  <br>
   <div class="d-flex justify-content-end align-items-center">
     <div class="mr-auto">
       <h3 style="font-weight: 700">SEDES</h3>
     </div>
     <div>
-      <app-add-program-modal></app-add-program-modal>
+      <app-add-sede-modal></app-add-sede-modal>
     </div>
-
   </div>
 
-  <div class="container">
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ver</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Contacto</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sede of sedes; index as i">
+        <td>
+          <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="See">
+            <i class="material-icons">&#xe417;</i>
+          </button>
+        </td>
+        <td>
+          {{ sede.nombre }}
+        </td>
+        <td>
+          {{ sede.contactame }}
+        </td>
 
+        <td>
+          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+            title="Edit"><i class="material-icons">&#xE254;</i></button>
 
-    <table class="table table-striped custab">
-      <thead>
-        <tr>
-          <th scope="col">Ver</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Contacto</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let sede of sedes; index as i">
-          <td>
-            <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-              title="See">
-              <i class="material-icons">&#xe417;</i>
-            </button>
-          </td>
-          <td>
-            {{ sede.nombre }}
-          </td>
-          <td>
-            {{ sede.contactame }}
-          </td>
+        </td>
 
-          <td>
-            <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-              title="Edit"><i class="material-icons">&#xE254;</i></button>
-
-          </td>
-
-          <td>
-            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-              title="Delete">
-              <i class="material-icons">&#xE872;</i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <td>
+          <button class="btn btn-danger btn-sm rounded-0" (click)="deleteSede(sede.id)"  type="button" data-toggle="tooltip" data-placement="top"
+            title="Delete">
+            <i class="material-icons">&#xE872;</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

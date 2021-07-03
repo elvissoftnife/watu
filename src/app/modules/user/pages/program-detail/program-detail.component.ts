@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ServicesService } from 'src/app/modules/security/pages/services/services.service';
 import Swal from 'sweetalert2';
+import { ProgramDetailService } from './program-detail.service';
 
 @Component({
   selector: 'app-program-detail',
@@ -10,17 +11,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./program-detail.component.scss'],
 })
 export class ProgramDetailComponent implements OnInit {
-  program$ = new Observable<any>();
-  id: String = '';
+  program: any;
+  id: string = '';
   constructor(
     private route: ActivatedRoute,
-    private servicesService: ServicesService
-  ) {}
+    private servicesService: ProgramDetailService
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     console.log('XD', this.route.snapshot.paramMap.get('id') || '');
     this.id = this.route.snapshot.paramMap.get('id') || '';
-    //this.program$ = this.servicesService.getProgram(this.id);
+    this.program = await this.servicesService.getPrograms(this.id);
+
+    console.log(this.program);
+
   }
   signUp() {
     Swal.fire({
@@ -32,8 +36,17 @@ export class ProgramDetailComponent implements OnInit {
       cancelButtonText: 'No',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
+        try {
+          const resp = await this.servicesService.inscribirmePrograma(+this.id);
+          Swal.fire('Inscrito', 'Felicidades fuiste inscrito al programa', 'success');
+          console.log(resp);
+        } catch (error: any) {
+          Swal.fire('Cancelled', error.error.mensaje, 'error');
+
+        }
+
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
