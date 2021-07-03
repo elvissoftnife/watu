@@ -11,6 +11,7 @@ import { SecurityContainerComponent } from './shared/components/security-contain
 import { SecurityNavComponent } from './shared/components/security-nav/security-nav.component';
 import { SecurityFooterComponent } from './shared/components/security-footer/security-footer.component';
 import { SecurityLoginComponent } from './shared/components/security-login/security-login.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SecurityLoginComponent } from './shared/components/security-login/secur
     ReactiveFormsModule,
     CommonModule,
     SecurityRoutingModule,
+    NgxSpinnerModule,
   ],
 })
-export class SecurityModule {}
+export class SecurityModule { }

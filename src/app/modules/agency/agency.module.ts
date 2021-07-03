@@ -11,6 +11,7 @@ import { AgencyNavComponent } from './shared/components/agency-nav/agency-nav.co
 import { AgencyFooterComponent } from './shared/components/agency-footer/agency-footer.component';
 import { EditProgramModalComponent } from './pages/programs/components/edit-program-modal/edit-program-modal.component';
 import { AddProgramModalComponent } from './pages/programs/components/add-program-modal/add-program-modal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddProgramModalComponent } from './pages/programs/components/add-progra
     ReactiveFormsModule,
     CommonModule,
     AgencyRoutingModule,
+    NgxSpinnerModule,
   ],
 })
-export class AgencyModule {}
+export class AgencyModule { }

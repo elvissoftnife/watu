@@ -10,6 +10,7 @@ import { UserNavComponent } from './shared/components/user-nav/user-nav.componen
 import { UserFooterComponent } from './shared/components/user-footer/user-footer.component';
 import { UserContainerComponent } from './shared/components/user-container/user-container.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserProfileComponent } from './shared/components/user-profile/user-prof
     ReactiveFormsModule,
     CommonModule,
     UserRoutingModule,
+    NgxSpinnerModule,
   ],
 })
-export class UserModule {}
+export class UserModule { }
