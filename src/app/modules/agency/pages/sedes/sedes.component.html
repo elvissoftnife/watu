@@ -42,8 +42,14 @@
         </td>
 
         <td>
-          <button class="btn btn-danger btn-sm rounded-0" (click)="deleteSede(sede.id)"  type="button" data-toggle="tooltip" data-placement="top"
-            title="Delete">
+          <button
+            class="btn btn-danger btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Delete"
+            (click)="deleteSede($event, sede.id )"
+          >
             <i class="material-icons">&#xE872;</i>
           </button>
         </td>
