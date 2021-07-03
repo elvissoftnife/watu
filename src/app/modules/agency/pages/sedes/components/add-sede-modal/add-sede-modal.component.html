@@ -1,1 +1,58 @@
-<p>add-sede-modal works!</p>
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nueva Sede</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" id="addSedeForm" autocomplete="off" [formGroup]="addSedeForm">
+            <div class="add-sede">
+                <label for="nombreSede">Nombre</label>
+                <div class="input-group">
+                    <input id="nombreSede" type="text" class="form-control" formControlName="nombre">
+                </div>
+                <span class="form-text text-danger" *ngIf="campoEsValido('nombre')">
+                    El nombre es requerido
+                </span>
+            </div>
+            <div class="add-sede">
+                <label for="distritoSede">Distrito</label>
+                <div class="input-group">
+                    <input id="distritoSede" type="text" class="form-control" formControlName="distrito">
+                </div>
+                <span class="form-text text-danger" *ngIf="campoEsValido('distrito')">
+                    El distrito es requerido
+                </span>
+            </div>
+            <div class="add-sede">
+                <label for="direccionSede">Dirección</label>
+                <div class="input-group">
+                    <input id="direccionSede" type="text" class="form-control" formControlName="direccion">
+                </div>
+                <span class="form-text text-danger" *ngIf="campoEsValido('direccion')">
+                    La dirección es requerida
+                </span>
+            </div>
+            <div class="add-sede">
+                <label for="contactoSede">Contacto</label>
+                <div class="input-group">
+                    <input id="contactoSede" type="text" class="form-control" formControlName="contactame">
+                </div>
+                <span class="form-text text-danger" *ngIf="campoEsValido('contactame')">
+                    El contacto es requerido
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" form="addSedeForm" class="btn btn-outline-dark">Guardar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancelar</button>
+    </div>
+
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Nueva Sede</button>
