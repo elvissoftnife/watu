@@ -3,21 +3,33 @@
     <p id="title">Mis programas:</p>
   </div>
   <div class="row">
-    <div *ngFor="let program of programs" class="col col-lg-4 col-md-6 col-sm-12 ">
+    <div
+      *ngFor="let program of programs"
+      class="col col-lg-4 col-md-6 col-sm-12"
+    >
       <div class="card">
-          <img src="{{program.programa.sede.agencia.image}}" class="card-img-top card-img" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{program.programa.nombre}}</h5>
-            <p class="card-text">{{program.programa.descripcion}}</p>
-            <div class="row"> 
-              <div class="col">
-                <button (click)="deleteProgram($event, program.programa.id)" class="btn btn-eliminar">Eliminar</button>
-              </div>
-              <div class="col">
-                <button class="btn btn-mas">Ver más</button>
-              </div>  
+        <img
+          src="{{ program.programa.sede.agencia.image }}"
+          class="card-img-top card-img"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ program.programa.nombre }}</h5>
+          <p class="card-text">{{ program.programa.descripcion }}</p>
+          <div class="row">
+            <div class="col">
+              <button
+                (click)="deleteProgram($event, program.id)"
+                class="btn btn-eliminar"
+              >
+                Eliminar
+              </button>
+            </div>
+            <div class="col">
+              <button class="btn btn-mas">Ver más</button>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
