@@ -35,6 +35,12 @@ export class SedesService {
         const url = 'https://api-watu.herokuapp.com/sede/crear/' + idUser;
         const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
         await this.http.post(url, bodyCreateProgram, { headers: httpHeaders }).toPromise();
+    }
+
+    async deleteSede(sede: Number): Promise<void> {
+        const url = 'https://api-watu.herokuapp.com/sede/' + sede;
+        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+        await this.http.delete(url).toPromise();
       }
 
 }

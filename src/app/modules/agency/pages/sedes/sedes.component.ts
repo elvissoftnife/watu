@@ -24,4 +24,9 @@ export class SedesComponent implements OnInit {
     await this.sedeService.LoadSedes();
   }
 
+  async deleteSede(sede: Number){
+    await this.sedeService.deleteSede(sede);
+    await this.sedeService.LoadSedes();
+  }
+
 }
