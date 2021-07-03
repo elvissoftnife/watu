@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ParamsPrograms, Program, Agency, Sede } from './interfaces/programas.interface';
 import { ProgramsService } from './programs.service';
 
@@ -8,11 +9,11 @@ import { ProgramsService } from './programs.service';
   styleUrls: ['./programs.component.css']
 })
 export class ProgramsComponent {
-  programs:{
+  programs: {
     lista_programas: Program[]
-  } = { lista_programas: []};
+  } = { lista_programas: [] };
 
-  paramsPrograms:ParamsPrograms = {
+  paramsPrograms: ParamsPrograms = {
     programa: '',
     body: {
       id_sede: 0,
@@ -28,39 +29,43 @@ export class ProgramsComponent {
     sedes: Sede[]
   } = { sedes: [] }
 
-  constructor(private programService: ProgramsService) {}
+  constructor(private programService: ProgramsService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     this.getPrograms();
     this.getAgencies();
   }
 
-  async getPrograms(){
+  redirect(url: string) {
+    this.router.navigateByUrl(url);
+  }
+
+  async getPrograms() {
     this.programs = await this.programService.getPrograms(this.paramsPrograms);
   }
 
-  async getAgencies(){
+  async getAgencies() {
     this.agencies = await this.programService.getAgencies();
   }
 
-  async getSedes(idSede: number){
+  async getSedes(idSede: number) {
     this.sedes = await this.programService.getSedes(idSede);
   }
 
-  changeProgram(){
+  changeProgram() {
     this.getPrograms();
   }
 
-  changeAgency(agencySelected:any){
+  changeAgency(agencySelected: any) {
     let idAgency = agencySelected.target.value;
     this.getSedes(idAgency);
     this.getPrograms();
   }
 
-  changeSede(){
+  changeSede() {
     this.getPrograms();
   }
-  cleanFilters(){
+  cleanFilters() {
     this.paramsPrograms = {
       programa: '',
       body: {

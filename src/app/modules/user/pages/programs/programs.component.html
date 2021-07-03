@@ -1,46 +1,70 @@
 <div class="container container-programs">
-    <div class="row programs-filtro">
-        <div class="col-12 search">
-            <!--<app-search></app-search>-->
-            <input 
-                id="typeahead-config" 
-                type="text" 
-                class="form-control" 
-                [(ngModel)]="paramsPrograms.programa" 
-                placeholder="Buscar programa..."
-                (change)="changeProgram()" />
-        </div>
-        <div class="col-12 col-md-5">
-            <select [(ngModel)]=paramsPrograms.body.id_agencia  class="filtro-select" (change)="changeAgency($event)">
-                <option hidden selected value="0">Agencia</option>
-                <option *ngFor="let agency of agencies.agencias" value={{agency.id}}>{{agency.nombre_agencia}}</option>
-            </select>
-        </div>
-        <div class="col-12 col-md-5">
-            <select name="select" [(ngModel)]="paramsPrograms.body.id_sede" class="filtro-select" (change)="changeSede()">
-                <option hidden selected value="0">Sede</option>
-                <option *ngFor="let sede of sedes.sedes" value={{sede.id}}>{{sede.nombre}}</option>
-            </select>
-        </div>
-        <div class="col-12 col-md-2 text-right">
-            <button type="button" class="btn btn-primary" (click)="cleanFilters()">
-                Limpiar Filtros
-            </button>
-        </div>
+  <div class="row programs-filtro">
+    <div class="col-12 search">
+      <!--<app-search></app-search>-->
+      <input
+        id="typeahead-config"
+        type="text"
+        class="form-control"
+        [(ngModel)]="paramsPrograms.programa"
+        placeholder="Buscar programa..."
+        (change)="changeProgram()"
+      />
     </div>
-    <div class="col-12 programs">
-        <!--<app-program></app-program>-->
-        <div class="row">
-            <div *ngFor="let program of programs.lista_programas"  class="col-12 col-md-4">
-                <div class="card card-program">
-                    <img src="assets/imgs/program.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{program.nombre}}</h5>
-                      <p class="card-text">{{program.descripcion}}</p>
-                      <a href="#" class="btn btn-primary btn-program">Ver mas</a>
-                    </div>
-                  </div>
-            </div>
-        </div>
+    <div class="col-12 col-md-5">
+      <select
+        [(ngModel)]="paramsPrograms.body.id_agencia"
+        class="filtro-select"
+        (change)="changeAgency($event)"
+      >
+        <option hidden selected value="0">Agencia</option>
+        <option
+          *ngFor="let agency of agencies.agencias"
+          value="{{ agency.id }}"
+        >
+          {{ agency.nombre_agencia }}
+        </option>
+      </select>
     </div>
+    <div class="col-12 col-md-5">
+      <select
+        name="select"
+        [(ngModel)]="paramsPrograms.body.id_sede"
+        class="filtro-select"
+        (change)="changeSede()"
+      >
+        <option hidden selected value="0">Sede</option>
+        <option *ngFor="let sede of sedes.sedes" value="{{ sede.id }}">
+          {{ sede.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="col-12 col-md-2 text-right">
+      <button type="button" class="btn btn-primary" (click)="cleanFilters()">
+        Limpiar Filtros
+      </button>
+    </div>
+  </div>
+  <div class="col-12 programs">
+    <!--<app-program></app-program>-->
+    <div class="row">
+      <div
+        *ngFor="let program of programs.lista_programas"
+        class="col-12 col-md-4"
+      >
+        <div class="card card-program">
+          <img src="assets/imgs/program.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{ program.nombre }}</h5>
+            <p class="card-text">{{ program.descripcion }}</p>
+            <a
+              (click)="redirect('/user/programdetail/' + program.id)"
+              class="btn btn-primary btn-program"
+              >Ver mas</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
