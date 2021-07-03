@@ -38,3 +38,13 @@
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
+.programs .card-program p {
+    display: -webkit-box;
+    /* max-width: 400px; */
+    height: 110px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.625;
+}
