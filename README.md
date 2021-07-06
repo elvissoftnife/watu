@@ -19,3 +19,7 @@ Rosa: #FB4381
 
 git checkout nombre_de_tu_rama
 git merge develop
+
+## Spinner
+
+https://www.npmjs.com/package/ngx-spinner

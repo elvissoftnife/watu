@@ -14,13 +14,10 @@
     />
   </head>
   <body>
-    <div id="montoCulqi">3500</div>
-    <div id="tokenCulqi"></div>
-
-    <div id="buyButton">Culqi</div>
-    <div id="buyButton2">Culqi</div>
-
-    <div id="avisarToken">Avisar token</div>
+    <div style="display: none" id="mountCulqi"></div>
+    <div style="display: none" id="tokenCulqi"></div>
+    <div style="display: none" id="buyButton"></div>
+    <div style="display: none" id="listenToken"></div>
 
     <app-root></app-root>
 
@@ -49,7 +46,7 @@
             title: "Culqi Store",
             currency: "PEN",
             description: "Polo Culqi lover",
-            amount: parseInt(document.getElementById("montoCulqi").innerHTML),
+            amount: parseInt(document.getElementById("mountCulqi").innerHTML),
           });
 
           // Abre el formulario con las opciones de Culqi.settings
@@ -63,7 +60,7 @@
           var token = Culqi.token.id;
           //alert("Se ha creado un token:" + token);
           document.getElementById("tokenCulqi").innerHTML = token;
-          document.getElementById("avisarToken").click();
+          document.getElementById("listenToken").click();
           //En esta linea de codigo debemos enviar el "Culqi.token.id"
           //hacia tu servidor con Ajax
         } else {

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { SecurityLoginService } from './security-login.service';
@@ -15,6 +16,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
+    private spinner: NgxSpinnerService,
     private fb: FormBuilder,
     public modal: NgbModal,
     private servicesService: SecurityLoginService,
@@ -31,7 +33,10 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
 
     try {
       const { email, password } = this.loginForm.value;
+
+      this.spinner.show("security_container_spinner")
       const data = await this.servicesService.login(email, password);
+      this.spinner.hide("security_container_spinner")
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("rol", data.usuario.roleId)
@@ -51,6 +56,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       }
       this.modal.dismissAll();
     } catch (error) {
+      this.spinner.hide("security_container_spinner")
       Swal.fire({
         icon: 'error',
         title: 'Error',
