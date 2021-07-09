@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SedesService } from './sedes.services';
 
@@ -14,7 +15,8 @@ export class SedesComponent implements OnInit {
   }
 
   constructor(
-    private sedeService: SedesService
+    private sedeService: SedesService,
+    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -49,6 +51,10 @@ export class SedesComponent implements OnInit {
       }
     })
 
+  }
+
+  verProgramasDeLaSede(id: number) {
+    this.router.navigateByUrl("/agency/programs/" + id)
   }
 
 }

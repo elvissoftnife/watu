@@ -15,12 +15,7 @@ export class SecurityContainerComponent implements OnInit {
   }
 
   venta() {
-    Pasarela.sendPay(2500);
-    Pasarela.listenPay(this.enviarToken);
   }
 
-  enviarToken(token: string) {
-    alert("Mi token es::: " + token)
-  }
 
 }

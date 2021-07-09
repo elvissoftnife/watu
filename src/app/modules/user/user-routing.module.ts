@@ -15,7 +15,7 @@ const routes: Routes = [
         component: MyprogramsComponent,
       },
       {
-        path: 'programs/:id?',
+        path: 'programs',
         component: ProgramsComponent,
       },
       {
@@ -30,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class UserRoutingModule { }

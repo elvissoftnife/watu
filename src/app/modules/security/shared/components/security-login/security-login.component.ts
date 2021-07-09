@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -16,6 +16,7 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
+    public modalActive: NgbActiveModal,
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
     public modal: NgbModal,
@@ -50,9 +51,9 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
           lastNameMother: data.usuario.apellido_materno,
         };
         localStorage.setItem('user', JSON.stringify(userProfile));
-        this.router.navigateByUrl("user/programs/50")
+        this.router.navigateByUrl("user/programs")
       } else {
-        this.router.navigateByUrl("agency/programs/50")
+        this.router.navigateByUrl("agency/sedes")
       }
       this.modal.dismissAll();
     } catch (error) {

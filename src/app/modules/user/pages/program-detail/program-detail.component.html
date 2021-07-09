@@ -1,29 +1,52 @@
-<ng-container *ngIf="program">
-  <div class="program-detail" *ngIf="program !== null; else isEmpty">
-    <div class="program-detail__left">
-      <h1>{{ program.programas.nombre }}</h1>
-      <h2>{{ program.programas.sede.agencia.nombre_agencia }}</h2>
-      <span>{{ program.programas.sede.nombre }}</span>
-      <br />
-      <br />
-      <br />
-      <p style="margin-right: 30px">
-        {{ program.programas.descripcion }}
-      </p>
-      <br />
+<div class="container-fluid">
+  <ng-container *ngIf="program">
+    <div class="program-detail" *ngIf="program !== null; else isEmpty">
+      <div class="program-detail__left mt-5 pt-5">
+        <h1 class="pb-2">{{ program.programas.nombre }}</h1>
+        <h2 class="pb-2" style="color: gray">
+          {{ program.programas.sede.agencia.nombre_agencia }}
+        </h2>
+        <span style="color: gray">{{ program.programas.sede.nombre }}</span>
+        <br />
+        <br />
+        <br />
+        <p style="margin-right: 30px; text-align: justify">
+          {{ program.programas.descripcion }}
+        </p>
+        <br />
 
-      <div class="program-detail__left__button">
-        <button (click)="signUp()">Inscribirme</button>
+        <div class="text-center">
+          <button
+            class="btn"
+            (click)="reservarVacante()"
+            style="
+              background-color: #653eb3;
+              color: white;
+              margin-right: 10px;
+              padding: 10px 15px;
+            "
+          >
+            Reservar vacante
+          </button>
+
+          <button
+            class="btn"
+            (click)="signUp()"
+            style="background-color: #fb4381; color: white; padding: 10px 15px"
+          >
+            Inscribirme
+          </button>
+        </div>
+      </div>
+      <div class="program-detail__right">
+        <div class="program-detail__right__background">
+          <img [src]="program.programas.image" alt="" />
+        </div>
       </div>
     </div>
-    <div class="program-detail__right">
-      <div class="program-detail__right__background">
-        <img [src]="program.programas.image" alt="" />
-      </div>
-    </div>
-  </div>
 
-  <ng-template #isEmpty>
-    <p>Cargando...</p>
-  </ng-template>
-</ng-container>
+    <ng-template #isEmpty>
+      <p>Cargando...</p>
+    </ng-template>
+  </ng-container>
+</div>

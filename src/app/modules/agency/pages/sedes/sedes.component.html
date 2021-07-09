@@ -1,5 +1,4 @@
 <div class="container agency-programs">
-
   <div class="d-flex justify-content-end align-items-center">
     <div class="mr-auto">
       <h3 style="font-weight: 700">SEDES</h3>
@@ -22,8 +21,14 @@
     <tbody>
       <tr *ngFor="let sede of sedes; index as i">
         <td>
-          <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="See">
+          <button
+            (click)="verProgramasDeLaSede(sede.id)"
+            class="btn btn-sm btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="See"
+          >
             <i class="material-icons">&#xe417;</i>
           </button>
         </td>
@@ -35,9 +40,15 @@
         </td>
 
         <td>
-          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="Edit"><i class="material-icons">&#xE254;</i></button>
-
+          <button
+            class="btn btn-success btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Edit"
+          >
+            <i class="material-icons">&#xE254;</i>
+          </button>
         </td>
 
         <td>
@@ -47,7 +58,7 @@
             data-toggle="tooltip"
             data-placement="top"
             title="Delete"
-            (click)="deleteSede($event, sede.id )"
+            (click)="deleteSede($event, sede.id)"
           >
             <i class="material-icons">&#xE872;</i>
           </button>

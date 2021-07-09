@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ServicesService } from 'src/app/modules/security/pages/services/services.service';
+import Pasarela from 'src/app/utils/Pasarela';
 import Swal from 'sweetalert2';
 import { ProgramDetailService } from './program-detail.service';
 
@@ -14,6 +15,7 @@ export class ProgramDetailComponent implements OnInit {
   program: any;
   id: string = '';
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private servicesService: ProgramDetailService
   ) { }
@@ -33,9 +35,9 @@ export class ProgramDetailComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si,inscribirme',
-      cancelButtonText: 'No',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#FB4381',
+      cancelButtonColor: 'grey',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -46,10 +48,45 @@ export class ProgramDetailComponent implements OnInit {
           Swal.fire('Cancelled', error.error.mensaje, 'error');
 
         }
-
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
     });
   }
+
+
+
+  reservarVacante() {
+    Swal.fire({
+      title: '¿Estas seguro de reservar la vacante?',
+      text: 'Para tener asegurado una vacante, es necesario realizar un pago.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si,proceder',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#FB4381',
+      cancelButtonColor: 'grey',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Pasarela.sendPay(50);
+        Pasarela.listenPay(this.ejecutarServicio, this);
+      }
+    });
+  }
+
+  async ejecutarServicio(token: string, that: any) {
+
+    console.log("---------------------");
+    console.log(token);
+
+    console.log("---------------------");
+
+    try {
+      const resp = await that.servicesService.inscribirmePrograma(+that.id);
+      Swal.fire('Inscrito', 'Felicidades fuiste inscrito al programa', 'success');
+      that.router.navigateByUrl("/user/myprograms")
+    } catch (error: any) {
+      Swal.fire('Cancelled', error.error.mensaje, 'error');
+
+    }
+  }
+
 }

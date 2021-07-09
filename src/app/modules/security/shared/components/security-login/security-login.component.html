@@ -1,52 +1,48 @@
-<ng-template #contenido let-modal>
-  <div class="loginForm" [formGroup]="loginForm">
-    <div class="modal-header">
-      <button
-        class="close"
-        aria-label="close"
-        type="button"
-        (click)="modal.dismiss()"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-body-container">
-        <div><span class="material-icons-outlined"> local_airport </span></div>
-        <label class="modal-body-container-label">Iniciar Sesión</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="email"
-          placeholder="Correo"
-          style="height: 50px"
-        />
-        <br />
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-          placeholder="Password"
-          style="height: 50px"
-        />
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div style="height: 20px"></div>
-
-      <button
-        type="button"
-        class="modal-footer-button"
-        (click)="login()"
-        [disabled]="isValid()"
-        [ngClass]="{ desabilitar: isValid() }"
-      >
-        <label class="modal-footer-button-label"> Ingresar! </label>
-      </button>
-    </div>
-
-    <div style="height: 60px"></div>
+<div class="loginForm" [formGroup]="loginForm">
+  <div class="modal-header">
+    <button
+      class="close"
+      aria-label="close"
+      type="button"
+      (click)="modalActive.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</ng-template>
+  <div class="modal-body">
+    <div class="modal-body-container">
+      <div><span class="material-icons-outlined"> local_airport </span></div>
+      <label class="modal-body-container-label">Iniciar Sesión</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="email"
+        placeholder="Correo"
+        style="height: 50px"
+      />
+      <br />
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password"
+        style="height: 50px"
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div style="height: 20px"></div>
 
-<span (click)="modal.open(contenido)"> Iniciar Sesion </span>
+    <button
+      type="button"
+      class="modal-footer-button"
+      (click)="login()"
+      [disabled]="isValid()"
+      [ngClass]="{ desabilitar: isValid() }"
+    >
+      <label class="modal-footer-button-label"> Ingresar! </label>
+    </button>
+  </div>
+
+  <div style="height: 60px"></div>
+</div>

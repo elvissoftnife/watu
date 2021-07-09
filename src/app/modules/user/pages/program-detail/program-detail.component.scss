@@ -18,13 +18,12 @@ $white: #ffffff;
       align-items: center;
       justify-content: center;
       button {
-        height: 60px;
         font-size: 22px;
         background-color: $pink;
         color: $white;
         border-color: transparent;
-        width: 220px;
         border-radius: 8px;
+        padding: 10px 35px;
       }
     }
   }

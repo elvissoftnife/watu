@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ServicesService } from 'src/app/modules/security/pages/services/services.service';
 import Swal from 'sweetalert2';
 import { UserProfileService } from './user-profile.service';
@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
+    public modalActive: NgbActiveModal,
     public modal: NgbModal,
     private fb: FormBuilder,
     private userProfileService: UserProfileService

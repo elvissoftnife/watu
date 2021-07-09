@@ -5,12 +5,12 @@ export default class Pasarela {
         document.getElementById("buyButton")?.click();
     }
 
-    static listenPay = (accion: Function) => {
+    static listenPay = (accion: Function, that: any) => {
         var eventElement = document.getElementById("listenToken");
         eventElement?.addEventListener('click', (event: any) => {
             var token = document.getElementById("tokenCulqi")?.innerHTML;
             if (token !== "") {
-                accion(token);
+                accion(token, that);
                 var tokenElement: any = document.getElementById("tokenCulqi");
                 tokenElement.innerText = "";
             }
