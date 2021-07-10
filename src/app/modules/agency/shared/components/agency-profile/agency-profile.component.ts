@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { AgencyProfileService } from './agency-profile.service';
 
@@ -22,6 +22,7 @@ export class AgencyProfileComponent implements OnInit, AfterViewInit {
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
+    public modalActive: NgbActiveModal,
     public modal: NgbModal,
     private fb: FormBuilder,
     private agencyProfileService: AgencyProfileService
@@ -39,7 +40,6 @@ export class AgencyProfileComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-    this.open(this.contenido);
     this.getAgencyProfile();
   }
 
@@ -96,39 +96,39 @@ export class AgencyProfileComponent implements OnInit, AfterViewInit {
     this.modal.open(content, options);
   }
 
-  getAgencyProfile(){
+  getAgencyProfile() {
     this.agencyProfileService
-    .getAgencyProfile(1)
-    .subscribe((resp) => {
-      console.log('resp ==> ', resp);
-    
-      this.profileForm.patchValue({
-        nombre: resp.perfil[0].nombre_agencia,
-        acronimo: resp.perfil[0].acronimo_agencia,
-        url: resp.perfil[0].url,
-        //imagen: resp.perfil[0].image,
-        descripcion: resp.perfil[0].descripcion
-      });
+      .getAgencyProfile(1)
+      .subscribe((resp) => {
+        console.log('resp ==> ', resp);
 
-      this.imgURL = resp.perfil[0].image;
-    });
+        this.profileForm.patchValue({
+          nombre: resp.perfil[0].nombre_agencia,
+          acronimo: resp.perfil[0].acronimo_agencia,
+          url: resp.perfil[0].url,
+          //imagen: resp.perfil[0].image,
+          descripcion: resp.perfil[0].descripcion
+        });
+
+        this.imgURL = resp.perfil[0].image;
+      });
   }
 
-  preview(files:any) {
+  preview(files: any) {
     if (files.length === 0)
       return;
- 
+
     var mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
       return;
     }
- 
+
     var reader = new FileReader();
     this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
     }
   }
 

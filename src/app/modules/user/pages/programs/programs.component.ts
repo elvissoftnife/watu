@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ParamsPrograms, Program, Agency, Sede } from './interfaces/programas.interface';
 import { ProgramsService } from './programs.service';
 
@@ -29,11 +30,13 @@ export class ProgramsComponent {
     sedes: Sede[]
   } = { sedes: [] }
 
-  constructor(private programService: ProgramsService, private router: Router) { }
+  constructor(private spinner: NgxSpinnerService, private programService: ProgramsService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    this.getPrograms();
-    this.getAgencies();
+    this.spinner.show("user_container_spinner")
+    await this.getPrograms();
+    await this.getAgencies();
+    this.spinner.hide("user_container_spinner")
   }
 
   redirect(url: string) {

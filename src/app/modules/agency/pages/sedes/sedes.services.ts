@@ -41,6 +41,13 @@ export class SedesService {
         const url = 'https://api-watu.herokuapp.com/sede/' + sede;
         const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
         await this.http.delete(url).toPromise();
-      }
+    }
+
+
+    async editarSede(sedeId: number, data: any): Promise<any> {
+        const url = 'https://api-watu.herokuapp.com/sede/editar/' + sedeId;
+        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return await this.http.put(url, data, { headers: httpHeaders }).toPromise();
+    }
 
 }

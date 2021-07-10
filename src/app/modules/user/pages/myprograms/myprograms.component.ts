@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { MyprogramsService } from './myprograms.service';
 @Component({
@@ -8,12 +9,15 @@ import { MyprogramsService } from './myprograms.service';
 })
 export class MyprogramsComponent implements OnInit {
   programs: any[] = [];
-  constructor(private service: MyprogramsService) {
+  constructor(
+    private spinner: NgxSpinnerService, private service: MyprogramsService) {
 
   }
 
   async ngOnInit(): Promise<void> {
+    this.spinner.show("user_container_spinner")
     await this.getData();
+    this.spinner.hide("user_container_spinner")
   }
 
   async getData() {

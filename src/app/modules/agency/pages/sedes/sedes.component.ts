@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
+import { EditSedeModalComponent } from './components/edit-sede-modal/edit-sede-modal.component';
 import { SedesService } from './sedes.services';
 
 @Component({
@@ -15,12 +18,16 @@ export class SedesComponent implements OnInit {
   }
 
   constructor(
+    private spinner: NgxSpinnerService,
+    private modalService: NgbModal,
     private sedeService: SedesService,
     private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.spinner.show("agency_container_spinner")
     await this.obtenerDataSede();
+    this.spinner.hide("agency_container_spinner")
   }
 
   async obtenerDataSede() {
@@ -55,6 +62,11 @@ export class SedesComponent implements OnInit {
 
   verProgramasDeLaSede(id: number) {
     this.router.navigateByUrl("/agency/programs/" + id)
+  }
+
+  editarSede(data: any) {
+    const modal = this.modalService.open(EditSedeModalComponent, { centered: true })
+    modal.componentInstance.data = data;
   }
 
 }
