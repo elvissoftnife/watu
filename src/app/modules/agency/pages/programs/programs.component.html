@@ -11,7 +11,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Ver</th>
+        <!--<th scope="col">Ver</th>-->
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
         <th scope="col">#Vacantes</th>
@@ -22,7 +22,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let programa of programas; index as i">
-        <td>
+        <!--<td>
           <button
             class="btn btn-sm btn-sm rounded-0"
             type="button"
@@ -32,7 +32,7 @@
           >
             <i class="material-icons">&#xe417;</i>
           </button>
-        </td>
+        </td>-->
         <td>
           {{ programa.nombre }}
         </td>
@@ -52,7 +52,7 @@
             data-toggle="tooltip"
             data-placement="top"
             title="Delete"
-            (click)="deleteProgram($event, programa.id )"
+            (click)="deleteProgram($event, programa.id)"
           >
             <i class="material-icons">&#xE872;</i>
           </button>
