@@ -41,8 +41,12 @@
             <h5 class="card-title" style="font-weight: 600">
               {{ program.nombre }}
             </h5>
-            <p class="card-text">{{ program.descripcion }}</p>
-            <a (click)="abrirModarLogin()" class="btn btn-primary btn-program"
+            <p class="card-text text-secondary" style="text-align: justify">
+              {{ program.descripcion }}
+            </p>
+            <a
+              (click)="abrirModarLogin()"
+              class="btn btn-primary btn-program fw-bold"
               >Ver mas</a
             >
           </div>
