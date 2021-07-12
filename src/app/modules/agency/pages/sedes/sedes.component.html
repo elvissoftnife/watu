@@ -23,8 +23,14 @@
     <tbody>
       <tr *ngFor="let sede of sedes; index as i">
         <td>
-          <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="See">
+          <button
+            (click)="verProgramasDeLaSede(sede.id)"
+            class="btn btn-sm btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Ver"
+          >
             <i class="material-icons">&#xe417;</i>
           </button>
         </td>

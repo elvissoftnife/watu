@@ -6,8 +6,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./myprograms.component.css']
 })
 export class MyprogramsComponent implements OnInit {
-  programs: any[]=[];
-  constructor() { 
+  programs: any[] = [];
+  constructor(
+    private spinner: NgxSpinnerService, 
+    private service: MyprogramsService) {
 
   }
   ngOnInit(): void {
