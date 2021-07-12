@@ -1,38 +1,57 @@
 <div class="container servicios">
-    <div class="servicios-info col-12">
-        <h3 style="font-weight:700">PROCESO</h3>
-        <div class="row align-items-center">
-            <div class="img-servicio1 col-12 col-md-4">
-                <img src="assets/imgs/personas.png" alt="">
-                <h4 class="proceso-titulo">Paso 1</h4>
-                <p>Registrate y create una nueva cuenta en WATU con tus datos personales. </p>
-            </div>
-            <div class="img-servicio2 col-12 col-md-4">
-                <img src="assets/imgs/menu.png" alt="">
-                <h4 class="proceso-titulo">Paso 2</h4>
-                <p>Busca el programa ideal en el cual quieras participar con tu agencia favorita. </p>
-            </div>
-            <div class="img-servicio3 col-12 col-md-4">
-                <img src="assets/imgs/avion.png" alt="">
-                <h4 class="proceso-titulo">Paso 3</h4>
-                <p>Inscríbete a tu programa y empezarás el proceso de convocatoria con tu agencia seleccionada.  </p>
-            </div>
-        </div>
+  <div class="servicios-info col-12">
+    <h3 style="font-weight: 700">PROCESO</h3>
+    <div class="row align-items-center">
+      <div class="img-servicio1 col-12 col-md-4">
+        <img src="assets/imgs/personas.png" alt="" />
+        <h4 class="proceso-titulo">Paso 1</h4>
+        <p>
+          Registrate y create una nueva cuenta en WATU con tus datos personales.
+        </p>
+      </div>
+      <div class="img-servicio2 col-12 col-md-4">
+        <img src="assets/imgs/menu.png" alt="" />
+        <h4 class="proceso-titulo">Paso 2</h4>
+        <p>
+          Busca el programa ideal en el cual quieras participar con tu agencia
+          favorita.
+        </p>
+      </div>
+      <div class="img-servicio3 col-12 col-md-4">
+        <img src="assets/imgs/avion.png" alt="" />
+        <h4 class="proceso-titulo">Paso 3</h4>
+        <p>
+          Inscríbete a tu programa y empezarás el proceso de convocatoria con tu
+          agencia seleccionada.
+        </p>
+      </div>
     </div>
-    <div class="programas col-12">
-        <h3 style="font-weight:700">PROGRAMAS MÁS RELEVANTES</h3>
-        <!--<app-program></app-program>-->
-        <div class="row">
-            <div *ngFor="let program of programs.lista_programas"  class="col-12 col-md-4">
-                <div class="card card-program">
-                    <img src="assets/imgs/program.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title" style="font-weight:600">{{program.nombre}}</h5>
-                      <p class="card-text">{{program.descripcion}}</p>
-                      <a href="#" class="btn btn-primary btn-program">Ver mas</a>
-                    </div>
-                  </div>
-            </div>
+  </div>
+  <div class="programas col-12">
+    <h3 style="font-weight: 700">PROGRAMAS MÁS RELEVANTES</h3>
+    <!--<app-program></app-program>-->
+    <div class="row">
+      <div
+        *ngFor="let program of programs.lista_programas"
+        class="col-12 col-md-4"
+      >
+        <div class="card card-program">
+          <img src="assets/imgs/program.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight: 600">
+              {{ program.nombre }}
+            </h5>
+            <p class="card-text text-secondary" style="text-align: justify">
+              {{ program.descripcion }}
+            </p>
+            <a
+              (click)="abrirModarLogin()"
+              class="btn btn-primary btn-program fw-bold"
+              >Ver mas</a
+            >
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

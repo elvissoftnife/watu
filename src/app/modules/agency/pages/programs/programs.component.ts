@@ -52,7 +52,7 @@ export class ProgramsComponent implements OnInit {
           'Eliminado!',
           'El programa ha sido removido.',
           'success'
-        )
+          ).then(() => { this.programService.LoadPrograms(); })
       }
     })
   }

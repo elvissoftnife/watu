@@ -1,3 +1,15 @@
+<ngx-spinner
+  name="security_container_spinner"
+  bdColor="rgba(0, 0, 0, 0.7)"
+  size="medium"
+  color="#fff"
+  type="ball-triangle-path"
+  [fullScreen]="true"
+  ><p style="color: white">Cargando...</p></ngx-spinner
+>
+
 <app-security-nav></app-security-nav>
-<router-outlet></router-outlet>
+<div style="margin-top: 90px">
+  <router-outlet></router-outlet>
+</div>
 <app-security-footer></app-security-footer>

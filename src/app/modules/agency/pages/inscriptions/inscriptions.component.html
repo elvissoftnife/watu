@@ -1,8 +1,7 @@
 <div class="container agency-programs">
-
   <div class="d-flex justify-content-end align-items-center">
     <div class="mr-auto">
-      <h3 style="font-weight:700">INSCRIPCIONES</h3>
+      <h3 style="font-weight: 700">INSCRIPCIONES</h3>
     </div>
     <div>
       <!--
@@ -14,30 +13,43 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Ver</th>
+        <!--<th scope="col">Ver</th>-->
         <th scope="col">Programa</th>
         <th scope="col">Inscrito</th>
         <th scope="col">Fecha</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <!--<th scope="col"></th>-->
+        <!--<th scope="col"></th>-->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let inscripcion of inscripciones; index as i">
-        <td>
-          <button class="btn btn-sm btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="See"><i class="material-icons">&#xe417;</i></button>
-        </td>
+        <!--<td>
+          <button
+            class="btn btn-sm btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="See"
+          >
+            <i class="material-icons">&#xe417;</i>
+          </button>
+        </td>-->
         <td>
           {{ inscripcion.programa.nombre }}
         </td>
         <td>
-          {{ inscripcion.usuario.nombre + ' ' + inscripcion.usuario.apellido_paterno + ' ' + inscripcion.usuario.apellido_materno }}
+          {{
+            inscripcion.usuario.nombre +
+              " " +
+              inscripcion.usuario.apellido_paterno +
+              " " +
+              inscripcion.usuario.apellido_materno
+          }}
         </td>
         <td>
           {{ inscripcion.fecha_reserva }}
         </td>
-        <td>
+        <!--<td>
           <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
             title="Edit"><i class="material-icons">&#xE254;</i></button>
 
@@ -46,9 +58,8 @@
         <td>
           <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
             title="Delete"><i class="material-icons">&#xE872;</i></button>
-        </td>
+        </td>-->
       </tr>
     </tbody>
   </table>
-
 </div>

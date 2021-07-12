@@ -15,7 +15,7 @@ const routes: Routes = [
         component: MyprogramsComponent,
       },
       {
-        path: 'programs/:id?',
+        path: 'programs',
         component: ProgramsComponent,
       },
       {
@@ -27,7 +27,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {
+      scrollPositionRestoration: 'enabled'
+    })],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class UserRoutingModule { }

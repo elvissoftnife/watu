@@ -1,5 +1,4 @@
 <div class="container agency-programs">
-  <br>
   <div class="d-flex justify-content-end align-items-center">
     <div class="mr-auto">
       <h3 style="font-weight: 700">SEDES</h3>
@@ -9,7 +8,6 @@
     </div>
   </div>
 
-  <br>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -29,7 +27,7 @@
             type="button"
             data-toggle="tooltip"
             data-placement="top"
-            title="Ver"
+            title="See"
           >
             <i class="material-icons">&#xe417;</i>
           </button>
@@ -42,14 +40,27 @@
         </td>
 
         <td>
-          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-            title="Edit"><i class="material-icons">&#xE254;</i></button>
-
+          <button
+            class="btn btn-success btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Edit"
+            (click)="editarSede(sede)"
+          >
+            <i class="material-icons">&#xE254;</i>
+          </button>
         </td>
 
         <td>
-          <button class="btn btn-danger btn-sm rounded-0" (click)="deleteSede(sede.id)"  type="button" data-toggle="tooltip" data-placement="top"
-            title="Delete">
+          <button
+            class="btn btn-danger btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Delete"
+            (click)="deleteSede($event, sede.id)"
+          >
             <i class="material-icons">&#xE872;</i>
           </button>
         </td>

@@ -40,7 +40,12 @@
       </select>
     </div>
     <div class="col-12 col-md-2 text-right">
-      <button type="button" class="btn btn-primary" (click)="cleanFilters()">
+      <button
+        type="button"
+        class="btn fw-bold"
+        style="background-color: #653eb3; color: white"
+        (click)="cleanFilters()"
+      >
         Limpiar Filtros
       </button>
     </div>
@@ -55,11 +60,13 @@
         <div class="card card-program">
           <img src="assets/imgs/program.png" class="card-img-top" alt="..." />
           <div class="card-body">
-            <h5 class="card-title">{{ program.nombre }}</h5>
-            <p class="card-text">{{ program.descripcion }}</p>
+            <h5 class="card-title fw-bold">{{ program.nombre }}</h5>
+            <p class="card-text text-secondary" style="text-align: justify">
+              {{ program.descripcion }}
+            </p>
             <a
               (click)="redirect('/user/programdetail/' + program.id)"
-              class="btn btn-primary btn-program"
+              class="btn btn-primary btn-program fw-bold"
               >Ver mas</a
             >
           </div>

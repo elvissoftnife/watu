@@ -13,6 +13,7 @@ import { SecurityLoginComponent } from './shared/components/security-login/secur
 import { ProgramComponent } from './pages/services/components/program/program.component';
 import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SecurityRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
   ],
 })
-export class SecurityModule {}
+export class SecurityModule { }

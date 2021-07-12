@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { UserNavService } from './user-nav.service';
 
 @Component({
@@ -25,5 +26,9 @@ export class UserNavComponent implements OnInit {
   public redirect(url: string): void {
     this.url = url;
     this.router.navigateByUrl(url);
+  }
+
+  abrirModalPerfil() {
+    this.modalService.open(UserProfileComponent, { centered: true })
   }
 }
