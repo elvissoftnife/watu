@@ -13,11 +13,13 @@ export class InscriptionsProgramComponent implements OnInit {
   }
 
   async ngOnInit(){
-    //let inscriptionsId=document.location.pathname.split("/")[3];
-    let inscriptionsId='1';
+    let inscriptionsId=document.location.pathname.split("/")[3];
+    //let inscriptionsId='1';
     let inscriptions=await this.inscriptionsService.getMyPrograms(parseInt(inscriptionsId));
+    console.log(inscriptions);
+    if(inscriptions.usuarios.length>0){
+      this.programName = inscriptions.usuarios[0].programa.nombre;
+    }
     this.inscriptions=inscriptions.usuarios;
-    console.log("=========>", inscriptions);
-    
   }
 }
