@@ -109,3 +109,19 @@ tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
 }
+
+.agency-programs-visible input {
+	/* Double-sized Checkboxes */
+	-ms-transform: scale(2); /* IE */
+	-moz-transform: scale(2); /* FF */
+	-webkit-transform: scale(2); /* Safari and Chrome */
+	-o-transform: scale(2); /* Opera */
+	transform: scale(2);
+	padding: 10px;
+}
+
+.agency-programs-visible {
+	text-align: center;
+	padding-top: 15px;
+}
+
