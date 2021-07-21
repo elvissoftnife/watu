@@ -81,7 +81,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   }
   saveData() {
     const { name, lastName, motherLastName } = this.profileForm.value;
-    const userId = localStorage.getItem('idUser') || '';
+    const userId = localStorage.getItem('userId') || '';
     const request = {
       nombre: name,
       apellido_paterno: lastName,

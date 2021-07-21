@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramsService } from './programs.service';
 import { Programa } from './interfaces/programas.interface';
+
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-programs',
