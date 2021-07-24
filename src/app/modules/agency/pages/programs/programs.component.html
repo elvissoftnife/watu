@@ -43,7 +43,16 @@
         <td>
           <!--<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
             title="Edit"><i class="material-icons">&#xE254;</i></button>-->
-          <app-edit-program-modal></app-edit-program-modal>
+          <button
+            class="btn btn-success btn-sm rounded-0"
+            (click)="editarPrograma(programa)"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Edit"
+          >
+            <i class="material-icons">&#xE254;</i>
+          </button>
         </td>
 
         <td>
@@ -59,8 +68,21 @@
           </button>
         </td>
         <td class="agency-programs-visible">
-          <input *ngIf="programa.estado === 0" type="checkbox" onload data-toggle="toggle" (click)="changeVisible($event, programa)">
-          <input *ngIf="programa.estado === 1" checked type="checkbox" onload data-toggle="toggle" (click)="changeVisible($event, programa)">
+          <input
+            *ngIf="programa.estado === 0"
+            type="checkbox"
+            onload
+            data-toggle="toggle"
+            (click)="changeVisible($event, programa)"
+          />
+          <input
+            *ngIf="programa.estado === 1"
+            checked
+            type="checkbox"
+            onload
+            data-toggle="toggle"
+            (click)="changeVisible($event, programa)"
+          />
         </td>
       </tr>
     </tbody>

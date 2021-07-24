@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { ProgramsService } from '../../programs.service';
@@ -24,11 +24,10 @@ export class EditProgramModalComponent {
 
   constructor(
     private fb: FormBuilder,
-    private modalService: NgbModal,
+    public modalService: NgbModal,
     private service: ProgramsService,
     private spinner: NgxSpinnerService,
-    public modalActive: NgbActiveModal
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     console.log(this.data);
@@ -41,7 +40,7 @@ export class EditProgramModalComponent {
 
   open(content: any) {
     console.log("entré");
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       console.log("content => ", content);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -68,7 +67,7 @@ export class EditProgramModalComponent {
       this.spinner.hide("agency_container_spinner")
       console.log(resp);
       Swal.fire("Actualizado", resp.mensaje, "success")
-      this.modalActive.close()
+      this.modalService.dismissAll()
     } catch (error) {
       this.spinner.hide("agency_container_spinner")
       Swal.fire("Error", "No se pudo actualizar", "error")

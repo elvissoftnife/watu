@@ -1,45 +1,53 @@
-<ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Editar Programa</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modalActive.close()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Editar Programa</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="modalService.dismissAll()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div [formGroup]="form" class="modal-body">
+  <div>
+    <div class="form-group edit-program">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        placeholder="Nombre del programa"
+        formControlName="nombre"
+      />
+      <label for="descripcion">Descripción</label>
+      <input
+        type="text"
+        class="form-control"
+        id="descripcion"
+        placeholder="Descripcion del programa"
+        formControlName="descripcion"
+      />
+      <label for="vacantes">#Vacantes</label>
+      <input
+        type="text"
+        class="form-control"
+        id="vacantes"
+        placeholder="Vacantes del programa"
+        formControlName="vacantes"
+      />
     </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group edit-program">
-          <label for="nombre">Nombre</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nombre"
-            placeholder="Nombre del programa"
-            formControlName="nombre"
-          />
-          <label for="descripcion">Descripción</label>
-          <input
-            type="text"
-            class="form-control"
-            id="descripcion"
-            placeholder="Descripcion del programa"
-            formControlName="descripcion"
-          />
-          <label for="vacantes">#Vacantes</label>
-          <input
-            type="text"
-            class="form-control"
-            id="vacantes"
-            placeholder="Vacantes del programa"
-            formControlName="vacantes"
-          />
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="enviarData()">Guardar</button>
-      <button type="button" class="btn btn-outline-dark" (click)="modalActive.close()">Cancelar</button>
-    </div>
-  </ng-template>
-
-  <button class="btn btn-success btn-sm rounded-0" (click)="open(content)" type="button" data-toggle="tooltip" data-placement="top"
-            title="Edit"><i class="material-icons">&#xE254;</i></button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="enviarData()">
+      Guardar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modalService.dismissAll()"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>
