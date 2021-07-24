@@ -3,6 +3,7 @@ import { ProgramsService } from './programs.service';
 import { Programa } from './interfaces/programas.interface';
 
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-programs',
   templateUrl: './programs.component.html',
@@ -19,11 +20,14 @@ export class ProgramsComponent implements OnInit {
   }
 
   constructor(
+    private spinner: NgxSpinnerService,
     private programService: ProgramsService
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.spinner.show("agency_container_spinner")
     await this.obtenerDataPrograma();
+    this.spinner.hide("agency_container_spinner")
   }
 
 
