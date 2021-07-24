@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { ProgramsService } from '../../programs.service';
 
 @Component({
   selector: 'app-edit-program-modal',
@@ -8,9 +12,32 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditProgramModalComponent {
 
+  @Input() data!: any;
+
+  form: FormGroup = this.fb.group({
+    nombre: [null, [Validators.required]],
+    descripcion: [null, [Validators.required]],
+    vacantes: [null, [Validators.required]],
+  })
+
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private fb: FormBuilder,
+    private modalService: NgbModal,
+    private service: ProgramsService,
+    private spinner: NgxSpinnerService,
+    public modalActive: NgbActiveModal
+  ) {}
+
+  ngOnInit(): void {
+    console.log(this.data);
+    this.form.patchValue({
+      nombre: this.data.nombre,
+      descripcion: this.data.descripcion,
+      vacantes: this.data.vacantes,
+    })
+  }
 
   open(content: any) {
     console.log("entré");
@@ -31,6 +58,23 @@ export class EditProgramModalComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  async enviarData() {
+
+    try {
+      this.spinner.show("agency_container_spinner")
+      const resp = await this.service.editProgram(this.data.id, this.form.value);
+      this.spinner.hide("agency_container_spinner")
+      console.log(resp);
+      Swal.fire("Actualizado", resp.mensaje, "success")
+      this.modalActive.close()
+    } catch (error) {
+      this.spinner.hide("agency_container_spinner")
+      Swal.fire("Error", "No se pudo actualizar", "error")
+
+    }
+
   }
 
 }

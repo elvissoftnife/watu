@@ -37,4 +37,10 @@ export class ProgramsService {
 
     await this.http.post<any>(url, bodyCreateProgram, { headers: httpHeaders }).toPromise();
   }
+
+  async editProgram(programaId: number, data: any): Promise<any> {
+    const url = 'https://api-watu.herokuapp.com/programa/editar/' + programaId;
+    const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return await this.http.put(url, data, { headers: httpHeaders }).toPromise();
+}
 }
