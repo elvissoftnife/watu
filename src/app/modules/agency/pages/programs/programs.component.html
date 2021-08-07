@@ -18,6 +18,7 @@
         <th scope="col">#Inscritos</th>
         <th scope="col">Editar</th>
         <th scope="col">Eliminar</th>
+        <th scope="col">Visible</th>
       </tr>
     </thead>
     <tbody>
@@ -56,6 +57,10 @@
           >
             <i class="material-icons">&#xE872;</i>
           </button>
+        </td>
+        <td class="agency-programs-visible">
+          <input *ngIf="programa.estado === 0" type="checkbox" onload data-toggle="toggle" (click)="changeVisible($event, programa)">
+          <input *ngIf="programa.estado === 1" checked type="checkbox" onload data-toggle="toggle" (click)="changeVisible($event, programa)">
         </td>
       </tr>
     </tbody>

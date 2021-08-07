@@ -1,1 +1,38 @@
-<p>inscriptions-program works!</p>
+<div class="container agency-programs h-100">
+    <div class="d-flex justify-content-end align-items-center">
+      <div class="mr-auto">
+        <h3 style="font-weight: 700">Inscripciones en: {{ programName }}</h3>
+      </div>
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombres y Apellidos</th>
+          <th scope="col">Fechas</th>
+          <th scope="col">Ver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inscription of inscriptions; index as i">
+          <td>
+            {{ inscription.usuario.nombre  }} {{ inscription.usuario.apellido_paterno  }} {{ inscription.usuario.apellido_materno  }}
+          </td>
+          <td>
+            {{ inscription.fecha_reserva }}
+          </td>
+          <td>
+            <button
+            class="btn btn-sm btn-sm rounded-0"
+            type="button"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="See"
+          >
+            <i class="material-icons">&#xe417;</i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

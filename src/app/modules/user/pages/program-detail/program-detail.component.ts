@@ -66,7 +66,7 @@ export class ProgramDetailComponent implements OnInit {
       cancelButtonColor: 'grey',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Pasarela.sendPay(50);
+        Pasarela.sendPay(5000);
         Pasarela.listenPay(this.ejecutarServicio, this);
       }
     });
