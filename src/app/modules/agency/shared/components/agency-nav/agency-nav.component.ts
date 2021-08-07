@@ -11,9 +11,9 @@ import { AgencyProfileComponent } from '../agency-profile/agency-profile.compone
 export class AgencyNavComponent implements OnInit {
   url = '';
 
-  constructor(private modalService: NgbModal, private router: Router) { }
+  constructor(private modalService: NgbModal, private router: Router) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public redirect(url: string): void {
     this.url = url;
@@ -21,6 +21,9 @@ export class AgencyNavComponent implements OnInit {
   }
 
   abrirPerfil() {
-    this.modalService.open(AgencyProfileComponent, { centered: true, size: "lg" });
+    this.modalService.open(AgencyProfileComponent, {
+      centered: true,
+      size: 'lg',
+    });
   }
 }
