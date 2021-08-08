@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -9,24 +9,31 @@ import {
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { SecurityRegisterService } from '../security-register/security-register.service';
 import { SecurityLoginService } from './security-login.service';
 @Component({
   selector: 'app-security-login',
   templateUrl: './security-login.component.html',
   styleUrls: ['./security-login.component.css'],
 })
-export class SecurityLoginComponent implements OnInit, AfterViewInit {
+export class SecurityLoginComponent {
   loginForm: FormGroup;
+  recoverForm: FormGroup;
   @ViewChild('contenido', { static: false }) private contenido: any;
-
+  isLogin: any;
   constructor(
     public modalActive: NgbActiveModal,
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
     public modal: NgbModal,
     private servicesService: SecurityLoginService,
-    private router: Router
+    private router: Router,
+    private securityRegisterService: SecurityRegisterService
   ) {
+    this.isLogin = true;
+    this.recoverForm = this.fb.group({
+      emailRecover: ['', [Validators.required]],
+    });
     this.loginForm = this.fb.group({
       email: [
         'juan.tomairo@unmsm.edu.pe',
@@ -35,8 +42,33 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
       password: ['juan.tomairo', [Validators.required]],
     });
   }
-  ngAfterViewInit(): void {}
-  ngOnInit(): void {}
+
+  public async enviarCorreo() {
+    const { emailRecover } = this.recoverForm.value;
+
+    await this.securityRegisterService
+      .recoverPassword(emailRecover)
+      .subscribe((val) => {
+        if (val === true) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Revisa tu correo electronico',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          return;
+        }
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'El correo no existe',
+        });
+      });
+  }
+  seeModal() {
+    this.isLogin = !this.isLogin;
+  }
   public async login(): Promise<void> {
     try {
       const { email, password } = this.loginForm.value;
@@ -72,8 +104,15 @@ export class SecurityLoginComponent implements OnInit, AfterViewInit {
     }
   }
   public isValid(): boolean {
-    const { email, password } = this.loginForm.value;
+    const { email, password } = this.recoverForm.value;
     if (email === '' || password === '') {
+      return true;
+    }
+    return false;
+  }
+  public isValidEmailSend(): boolean {
+    const { emailRecover } = this.loginForm.value;
+    if (emailRecover === '') {
       return true;
     }
     return false;

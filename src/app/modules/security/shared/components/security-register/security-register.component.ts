@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { ServicesService } from '../../../pages/services/services.service';
+import { SecurityRegisterService } from './security-register.service';
 
 @Component({
   selector: 'app-security-register',
@@ -16,7 +17,7 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     public modal: NgbModal,
-    private servicesService: ServicesService
+    private servicesService: SecurityRegisterService
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -51,23 +52,23 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
       email: email,
       password: password,
     };
-    //this.servicesService.register(request).subscribe((val) => {
-    //  if (val == true) {
-    //    Swal.fire({
-    //      position: 'center',
-    //      icon: 'success',
-    //      title: 'Usuario registrado exitosamente',
-    //      showConfirmButton: false,
-    //      timer: 1500,
-    //    });
-    //    return;
-    //  }
-    //  Swal.fire({
-    //    icon: 'error',
-    //    title: 'Error',
-    //    text: 'Error al registra el usuario',
-    //  });
-    //});
+    this.servicesService.register(request).subscribe((val) => {
+      if (val == true) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Usuario registrado exitosamente',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        return;
+      }
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error al registra el usuario',
+      });
+    });
     this.modal.dismissAll();
   }
 }

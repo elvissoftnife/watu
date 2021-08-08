@@ -1,4 +1,4 @@
-<div class="loginForm" [formGroup]="loginForm">
+<div class="loginForm" [formGroup]="loginForm" *ngIf="isLogin">
   <div class="modal-header">
     <button
       class="close"
@@ -42,7 +42,34 @@
     >
       <label class="modal-footer-button-label"> Ingresar! </label>
     </button>
+    <span
+      >Has olvidado tu contraseña ? click
+      <strong (click)="seeModal()">aquí</strong>
+    </span>
   </div>
 
   <div style="height: 60px"></div>
 </div>
+<ng-container *ngIf="!isLogin">
+  <div [formGroup]="recoverForm" style="padding: 30px">
+    <h2>Recuperación de contraseña</h2>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="emailRecover"
+      placeholder="Correo"
+      style="height: 50px; margin-bottom: 10px"
+    />
+
+    <button
+      type="button"
+      class="modal-footer-button"
+      (click)="modalActive.close()"
+      (click)="enviarCorreo()"
+      [disabled]="isValidEmailSend()"
+      [ngClass]="{ desabilitar: isValidEmailSend() }"
+    >
+      <label class="modal-footer-button-label"> Enviar correo </label>
+    </button>
+  </div>
+</ng-container>

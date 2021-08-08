@@ -64,7 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fb4381;
+  background: #653eb3;
   border-radius: 5px;
   color: #fff;
   border-color: snow;
@@ -80,6 +80,7 @@
   text-align: center;
   cursor: pointer;
   color: #fff4f4;
+  margin: 0;
 }
 
 .desabilitar {
