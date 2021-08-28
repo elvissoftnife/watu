@@ -1,4 +1,10 @@
 .footer {
   height: 40px;
   background-color: #653eb3;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
 }

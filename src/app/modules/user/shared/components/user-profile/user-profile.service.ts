@@ -14,6 +14,7 @@ export class UserProfileService {
     return this.http.put(`${environment.apiUrl}/user/${userId}`, request).pipe(
       tap((val: any) => {
         console.log(val);
+        localStorage.setItem('user', JSON.stringify(request));
       }),
       map((_) => true),
       catchError((_) => {

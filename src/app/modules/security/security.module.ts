@@ -14,6 +14,7 @@ import { ProgramComponent } from './pages/services/components/program/program.co
 import { SecurityRegisterComponent } from './shared/components/security-register/security-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SecurityLoginComponent,
     ProgramComponent,
     SecurityRegisterComponent,
+    RecoverPasswordComponent,
   ],
   imports: [
     NgbModule,

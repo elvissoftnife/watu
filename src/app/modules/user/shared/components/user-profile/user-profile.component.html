@@ -59,6 +59,13 @@
           placeholder="repetir contraseña"
           formControlName="repeatPassword"
         />
+
+        <span
+          *ngIf="this.passwordForm?.hasError('mismatch')"
+          style="color: red; font-weight: 700; font-size: 12px"
+        >
+          Las contraseñas no coinciden
+        </span>
       </div>
     </div>
     <div class="modal-container__personal-date" *ngIf="!isActive">
@@ -125,6 +132,10 @@
       (click)="changePassword()"
       (click)="modalActive.close()"
       style="background-color: #fb4381; color: white; margin-right: 10px"
+      [disabled]="
+        this.passwordForm.invalid ||
+        this.passwordForm.get('repeatPassword')?.hasError('mismatch')
+      "
     >
       Cambiar Contraseña
     </button>
