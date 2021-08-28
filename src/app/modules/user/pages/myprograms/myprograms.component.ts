@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { MyprogramsService } from './myprograms.service';
@@ -10,7 +11,7 @@ import { MyprogramsService } from './myprograms.service';
 export class MyprogramsComponent implements OnInit {
   programs: any[] = [];
   constructor(
-    private spinner: NgxSpinnerService, private service: MyprogramsService) {
+    private spinner: NgxSpinnerService, private service: MyprogramsService, private router: Router) {
 
   }
 
@@ -56,5 +57,9 @@ export class MyprogramsComponent implements OnInit {
         }).catch(err => console.log(err));
       }
     })
+  }
+
+  verDetallePrograma(id:string){
+    this.router.navigateByUrl('/user/programdetail/'+id);
   }
 }
