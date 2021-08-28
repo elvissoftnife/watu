@@ -36,10 +36,10 @@ export class SecurityLoginComponent {
     });
     this.loginForm = this.fb.group({
       email: [
-        'juan.tomairo@unmsm.edu.pe',
+        '',
         [Validators.required, Validators.email],
       ],
-      password: ['juan.tomairo', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
