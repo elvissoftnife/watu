@@ -2,6 +2,7 @@ export interface Program {
   id: number;
   nombre: string;
   descripcion: string;
+  image: string;
   sede: {
     id: string;
     agencia: {

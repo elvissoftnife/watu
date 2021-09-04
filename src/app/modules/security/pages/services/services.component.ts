@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { SecurityLoginComponent } from '../../shared/components/security-login/security-login.component';
 import { ParamsPrograms, Program } from './interfaces/programas.interface';
 import { ServicesService } from './services.service';
 
+interface IData {
+  lista_programas: Program[]
+}
 
 @Component({
   selector: 'app-services',
@@ -11,9 +15,9 @@ import { ServicesService } from './services.service';
   styleUrls: ['./services.component.css']
 })
 export class ServicesComponent {
-  programs: {
-    lista_programas: Program[]
-  } = { lista_programas: [] };
+  programs:IData = {
+    lista_programas:[]
+  }
 
   paramsPrograms: ParamsPrograms = {
     programa: '',
@@ -23,14 +27,16 @@ export class ServicesComponent {
     }
   }
 
-  constructor(private modalService: NgbModal, private serviceService: ServicesService) { }
+  constructor(private spinner: NgxSpinnerService, private modalService: NgbModal, private serviceService: ServicesService) { }
 
   async ngOnInit(): Promise<void> {
     this.getPrograms();
   }
 
   async getPrograms() {
+    this.spinner.show("security_container_spinner")
     let allPrograms = await this.serviceService.getPrograms(this.paramsPrograms);
+    this.spinner.hide("security_container_spinner")
     if (allPrograms.lista_programas.length >= 4)
       this.programs.lista_programas = this.getSubArrayPrograms(allPrograms.lista_programas);
     else

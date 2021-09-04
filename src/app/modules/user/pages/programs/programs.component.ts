@@ -4,15 +4,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ParamsPrograms, Program, Agency, Sede } from './interfaces/programas.interface';
 import { ProgramsService } from './programs.service';
 
+interface IData {
+  lista_programas: Program[]
+}
 @Component({
   selector: 'app-programs',
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.css']
 })
 export class ProgramsComponent {
-  programs: {
-    lista_programas: Program[]
-  } = { lista_programas: [] };
+  programs:IData = {
+    lista_programas:[]
+  }
 
   paramsPrograms: ParamsPrograms = {
     programa: '',
@@ -44,7 +47,9 @@ export class ProgramsComponent {
   }
 
   async getPrograms() {
-    this.programs = await this.programService.getPrograms(this.paramsPrograms);
+    const data = await this.programService.getPrograms(this.paramsPrograms);
+    console.log("data => ", data.lista_programas)
+    this.programs = data;
   }
 
   async getAgencies() {

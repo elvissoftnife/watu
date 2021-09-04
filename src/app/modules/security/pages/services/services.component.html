@@ -32,11 +32,11 @@
     <!--<app-program></app-program>-->
     <div class="row">
       <div
-        *ngFor="let program of programs.lista_programas"
+        *ngFor="let program of programs"
         class="col-12 col-md-4"
       >
         <div class="card card-program">
-          <img src="assets/imgs/program.png" class="card-img-top" alt="..." />
+          <img style="height: 300px;" [src]="program.image" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title" style="font-weight: 600">
               {{ program.nombre }}
