@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class UserNavService {
+export class AgencyNavService {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 

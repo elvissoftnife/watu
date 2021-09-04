@@ -1,7 +1,7 @@
 <div class="modal-body">
   <div class="row">
     <div class="col-md-8">
-      <p style="color: #fb4381; font-size: 25px; font-weight: bold">
+      <p style=" font-size: 28px;">
         Editar Sede
       </p>
     </div>
@@ -19,7 +19,7 @@
 
   <div class="formulario" [formGroup]="form">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="mb-3">
           <label for="distrito" class="form-label">Distrito</label>
           <input
@@ -34,17 +34,19 @@
               form.controls.distrito.touched && form.controls.distrito.errors
             "
             class="text-end text-danger"
-            style="font-size: 15px"
-          >
+            style="    font-size: 15px;
+              text-align: left!important;
+              margin-top: 10px;"
+              >
             Ingresa el distrito.
           </p>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="mb-3">
           <label for="contactame" class="form-label">Contacto</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="contactame"
             placeholder="Numero de contacto"
@@ -56,8 +58,10 @@
               form.controls.contactame.errors
             "
             class="text-end text-danger"
-            style="font-size: 15px"
-          >
+            style="    font-size: 15px;
+              text-align: left!important;
+              margin-top: 10px;"
+                >
             Ingresa el numero de contacto.
           </p>
         </div>
@@ -80,7 +84,9 @@
               form.controls.direccion.touched && form.controls.direccion.errors
             "
             class="text-end text-danger"
-            style="font-size: 15px"
+            style="    font-size: 15px;
+            text-align: left!important;
+            margin-top: 10px;"
           >
             Ingresa la direccion.
           </p>
@@ -93,16 +99,16 @@
         <button
           (click)="enviarData()"
           type="button"
-          class="btn"
-          style="background-color: #fb4381; color: white; margin-right: 10px"
+          class="btn btn-outline-dark"
+          [disabled]="form.invalid"
         >
           Guardar
         </button>
         <button
           type="button"
-          class="btn"
+          class="btn btn-outline-dark"
           (click)="modalActive.close()"
-          style="cursor: pointer"
+          style="margin-left: 10px;"
         >
           Cancelar
         </button>

@@ -80,6 +80,7 @@ export class SecurityLoginComponent {
       localStorage.setItem('token', data.token);
       localStorage.setItem('rol', data.usuario.roleId);
       localStorage.setItem('userId', data.usuario.id);
+      localStorage.setItem('email', email);
 
       if (data.usuario.roleId === 1) {
         const userProfile = {
