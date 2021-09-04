@@ -20,16 +20,27 @@ export class RecoverPasswordComponent implements OnInit {
     private servicesService: ServicesService,
     private spinner: NgxSpinnerService
   ) {
-    this.recoverPasswordForm = this.fb.group({
-      newPassword: ['', [Validators.required]],
-      repeatNewPassword: ['', [Validators.required]],
-    });
+    this.recoverPasswordForm = this.fb.group(
+      {
+        newPassword: ['', [Validators.required]],
+        repeatNewPassword: ['', [Validators.required]],
+      },
+      { validator: this.passwordMatchValidator }
+    );
   }
 
   ngOnInit(): void {
     console.log(this.router.url.split('?')[1].split('=')[1]);
     this.token = this.router.url.split('?')[1].split('=')[1];
     console.log('token', this.token);
+  }
+  isValid() {
+    return this.recoverPasswordForm.valid;
+  }
+  passwordMatchValidator(g: FormGroup) {
+    return g?.get('newPassword')?.value === g?.get('repeatNewPassword')?.value
+      ? null
+      : { mismatch: true };
   }
   updatePassword() {
     const { newPassword, repeatNewPassword } = this.recoverPasswordForm.value;
