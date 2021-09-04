@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class AgencyNavService {
   private apiUrl = environment.apiUrl;
+  private _apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   async getData(): Promise<any> {
@@ -21,6 +23,14 @@ export class AgencyNavService {
       email:localStorage.getItem("email")
     }).toPromise();
   }
+ 
+  async inscribirmePrograma(token:string): Promise<any> {
+    const userId = localStorage.getItem("userId");
+    const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  
+    return await this.http.post("https://api-watu.herokuapp.com/pagar/inscripcion/agencia", {
+      email: localStorage.getItem("email"),
+      token: token
+      }, { headers: httpHeaders }).toPromise();
+  }
 }

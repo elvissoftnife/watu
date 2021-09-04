@@ -32,7 +32,15 @@ export class AgencyNavComponent implements OnInit {
     private servicesService: AgencyNavService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargarData();
+  }
+
+
+  async cargarData(){
+    const data:any = await this.servicesService.getSuscripcion();  
+    this.suscripcion = data; 
+  }
 
   public redirect(url: string): void {
     this.url = url;
@@ -68,11 +76,12 @@ export class AgencyNavComponent implements OnInit {
 
   async ejecutarServicio(token: string, that: any) {
     try {
-      //const resp = await that.servicesService.inscribirmePrograma(+that.id);
-      //console.log(resp);
+      const resp = await that.servicesService.inscribirmePrograma(token);
+      console.log(resp);
       Swal.fire('Inscrito', 'Felicidades fuiste inscrito al programa', 'success');
       window.location.reload();
     } catch (error: any) {
+      console.log(error);
       console.log(error);
       
       Swal.fire('Cancelled', error.error.mensaje, 'error');

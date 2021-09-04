@@ -23,4 +23,12 @@ export class UserNavService {
   }
 
   
+  async suscribirme(token:string): Promise<any> {
+    const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return await this.http.post("https://api-watu.herokuapp.com/pagar/inscripcion/user", { 
+    email:localStorage.getItem("email")    ,
+    token:token
+  }, { headers: httpHeaders }).toPromise();
+  }
 }

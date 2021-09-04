@@ -75,11 +75,11 @@ export class UserNavComponent implements OnInit {
 
   async ejecutarServicio(token: string, that: any) {
     try {
-      const resp = await that.servicesService.inscribirmePrograma(+that.id);
+      const resp = await that.servicio.suscribirme(token);
       console.log(resp);
       
       Swal.fire('Inscrito', 'Felicidades fuiste inscrito al programa', 'success');
-      that.router.navigateByUrl("/user/myprograms")
+      window.location.reload();
     } catch (error: any) {
       console.log(error);
       
