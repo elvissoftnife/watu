@@ -17,7 +17,7 @@ export class EditSedeModalComponent implements OnInit {
   form: FormGroup = this.fb.group({
     distrito: [null, [Validators.required]],
     direccion: [null, [Validators.required]],
-    contactame: [null, [Validators.required]],
+    contactame: [null, [Validators.required, Validators.min(900000000), Validators.max(999999999)]],
   })
 
   constructor(

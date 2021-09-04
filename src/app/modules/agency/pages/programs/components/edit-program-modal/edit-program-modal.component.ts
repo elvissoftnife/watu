@@ -17,7 +17,7 @@ export class EditProgramModalComponent {
   form: FormGroup = this.fb.group({
     nombre: [null, [Validators.required]],
     descripcion: [null, [Validators.required]],
-    vacantes: [null, [Validators.required]],
+    vacantes: [null, [Validators.required, Validators.min(0)]],
   })
 
   closeResult = '';

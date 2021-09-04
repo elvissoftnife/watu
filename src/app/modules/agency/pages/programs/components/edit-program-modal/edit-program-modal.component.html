@@ -20,6 +20,19 @@
         placeholder="Nombre del programa"
         formControlName="nombre"
       />
+      <p
+        *ngIf="
+          form.controls.nombre.touched &&
+          form.controls.nombre.errors
+        "
+        class="text-end text-danger"
+        style="    font-size: 15px;
+          text-align: left!important;
+          margin-top: 10px;"
+            >
+        Ingresa el nombre del programa.
+      </p>
+
       <label for="descripcion">Descripción</label>
       <input
         type="text"
@@ -28,18 +41,49 @@
         placeholder="Descripcion del programa"
         formControlName="descripcion"
       />
+      <p
+        *ngIf="
+          form.controls.descripcion.touched &&
+          form.controls.descripcion.errors
+        "
+        class="text-end text-danger"
+        style="    font-size: 15px;
+          text-align: left!important;
+          margin-top: 10px;"
+            >
+        Ingresa la descripcion.
+      </p>
+
       <label for="vacantes">#Vacantes</label>
       <input
-        type="text"
+        type="number"
         class="form-control"
         id="vacantes"
         placeholder="Vacantes del programa"
         formControlName="vacantes"
       />
+      <p
+        *ngIf="
+          form.controls.vacantes.touched &&
+          form.controls.vacantes.errors
+        "
+        class="text-end text-danger"
+        style="    font-size: 15px;
+          text-align: left!important;
+          margin-top: 10px;"
+            >
+        Ingresa el numero de vacantes
+      </p>
+
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="enviarData()">
+    <button 
+    type="button" 
+    class="btn btn-outline-dark" 
+    (click)="enviarData()"
+    [disabled]="form.invalid"
+    >
       Guardar
     </button>
     <button

@@ -12,10 +12,35 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" style="    color: white;
+      font-weight: bold;
+      margin-left: -22px;">Menu</span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <a
+            *ngIf="!suscripcion.resultado"
+            class="nav-link active text-light btn"
+            aria-current="page"
+            (click)="suscribirme()"
+            style="background: #60b907;
+            font-weight: bold;"
+            >Subscribirme</a
+          >
+          <a
+          *ngIf="suscripcion.resultado"
+            class="nav-link active text-light btn"
+            style="    cursor: auto;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff!important;"
+            aria-current="page"
+            (click)="suscribirme"
+            >suscripcion valida hasta {{suscripcion.fecha_fin_suscripcion}}</a>
+        </li>
+
         <li class="nav-item">
           <a
             class="nav-link active text-light btn"
