@@ -12,14 +12,15 @@
         placeholder="Nombres"
         style="height: 50px"
       />
-      <br />
-      <input
-        type="text"
-        class="form-control"
-        formControlName="motherLastName"
-        placeholder="Apellido Materno"
-        style="height: 50px"
-      />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('name')?.errors?.required &&
+          registerForm.get('name')?.touched
+        "
+        >Requerido</small
+      >
+
       <br />
       <input
         type="password"
@@ -28,7 +29,32 @@
         placeholder="Apellido Paterno"
         style="height: 50px"
       />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('lastName')?.errors?.required &&
+          registerForm.get('lastName')?.touched
+        "
+        >Requerido</small
+      >
       <br />
+      <input
+        type="text"
+        class="form-control"
+        formControlName="motherLastName"
+        placeholder="Apellido Materno"
+        style="height: 50px"
+      />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('motherLastName')?.errors?.required &&
+          registerForm.get('motherLastName')?.touched
+        "
+        >Requerido</small
+      >
+      <br />
+
       <input
         type="email"
         class="form-control"
@@ -36,19 +62,59 @@
         placeholder="email"
         style="height: 50px"
       />
+      <small
+        class="text-danger"
+        *ngIf="registerForm.get('email')?.errors?.pattern"
+        >Email invalido</small
+      >
       <br />
       <input
         type="password"
         class="form-control"
         formControlName="password"
-        placeholder="Password"
+        placeholder="Contraseña"
         style="height: 50px"
       />
+      <span
+        class="error-email"
+        *ngIf="registerForm.get('password')?.errors?.minlength"
+      >
+        La contraseña debe contener como minimo 6 caracteres</span
+      >
+      <br />
+      <input
+        type="password"
+        class="form-control"
+        formControlName="confirmPassword"
+        placeholder="confirmacion de contraseña"
+        style="height: 50px"
+      />
+      <span
+        class="error-email"
+        *ngIf="registerForm.get('confirmPassword')?.errors?.minlength"
+      >
+        La contraseña debe contener como minimo 6 caracteres</span
+      >
     </div>
+    <span
+      *ngIf="this.registerForm?.hasError('mismatch')"
+      style="color: red; font-weight: 700; font-size: 12px"
+    >
+      Las contraseñas no coinciden
+    </span>
   </div>
+
   <div class="modal-footer">
-    <button type="button" class="modal-footer-button" (click)="registerUser()">
-      <label class="modal-footer-button-label">Registrar</label>
+    <button
+      type="button"
+      (click)="registerUser()"
+      [disabled]="!isValid()"
+      [ngClass]="isValid() ? 'modal-footer-button' : 'desabilitar'"
+    >
+      <label
+        [ngClass]="isValid() ? 'modal-footer-button-label' : 'noValidLabel'"
+        >Registrar</label
+      >
     </button>
   </div>
 

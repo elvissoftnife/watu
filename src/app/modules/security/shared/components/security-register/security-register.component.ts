@@ -12,6 +12,7 @@ import { SecurityRegisterService } from './security-register.service';
 })
 export class SecurityRegisterComponent implements OnInit, AfterViewInit {
   registerForm: FormGroup;
+  submitted: boolean = false;
   @ViewChild('contenido', { static: false }) private contenido: any;
 
   constructor(
@@ -19,14 +20,32 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
     public modal: NgbModal,
     private servicesService: SecurityRegisterService
   ) {
-    this.registerForm = this.fb.group({
-      name: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      motherLastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-    });
+    this.registerForm = this.fb.group(
+      {
+        name: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        motherLastName: ['', [Validators.required]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,3})$'
+            ),
+          ],
+        ],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      },
+      { validator: this.passwordMatchValidator }
+    );
   }
+  passwordMatchValidator(g: FormGroup) {
+    return g?.get('password')?.value === g?.get('confirmPassword')?.value
+      ? null
+      : { mismatch: true };
+  }
+
   ngAfterViewInit(): void {
     //this.open(this.contenido);
   }
@@ -43,6 +62,7 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
   registerUser() {
+    this.submitted = true;
     const { name, lastName, motherLastName, email, password } =
       this.registerForm.value;
     const request = {
@@ -70,5 +90,8 @@ export class SecurityRegisterComponent implements OnInit, AfterViewInit {
       });
     });
     this.modal.dismissAll();
+  }
+  isValid() {
+    return this.registerForm.valid;
   }
 }

@@ -32,15 +32,30 @@ export class SecurityLoginComponent {
   ) {
     this.isLogin = true;
     this.recoverForm = this.fb.group({
-      emailRecover: ['', [Validators.required]],
+      emailRecover: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,3})$'
+          ),
+        ],
+      ],
     });
     this.loginForm = this.fb.group({
       email: [
         '',
-        [Validators.required, Validators.email],
+        [
+          Validators.required,
+          Validators.pattern(
+            '^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,3})$'
+          ),
+        ],
       ],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
+    //[a-zA-Z]{2,3}, puede haber entre 2 y 3 caracteres y deben ser letras
+    // $ significa que la expresion regular debe terminar con [a-zA-Z]{2,3}, osea despues del . debe tener entre 2 y 3 caracteres
   }
 
   public async enviarCorreo() {
@@ -104,18 +119,10 @@ export class SecurityLoginComponent {
     }
   }
   public isValid(): boolean {
-    const { email, password } = this.recoverForm.value;
-    if (email === '' || password === '') {
-      return true;
-    }
-    return false;
+    return this.loginForm.valid;
   }
   public isValidEmailSend(): boolean {
-    const { emailRecover } = this.loginForm.value;
-    if (emailRecover === '') {
-      return true;
-    }
-    return false;
+    return this.recoverForm.valid;
   }
   public open(content: any): void {
     const options: NgbModalOptions = {

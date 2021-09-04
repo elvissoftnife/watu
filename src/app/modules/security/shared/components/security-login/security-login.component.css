@@ -83,6 +83,21 @@
   margin: 0;
 }
 
+.error-email {
+  width: 100%;
+  color: red;
+}
+.isNotValidLabel {
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: medium;
+  font-size: 26px;
+  color: #fff4f4;
+  line-height: 35px;
+  margin: 0;
+}
 .desabilitar {
   background: black !important;
+  cursor: auto;
 }

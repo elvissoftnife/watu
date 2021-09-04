@@ -20,6 +20,10 @@
         placeholder="Correo"
         style="height: 50px"
       />
+      <span class="error-email" *ngIf="loginForm.get('email')?.errors?.pattern"
+        >Email invalido</span
+      >
+
       <br />
       <input
         type="password"
@@ -28,23 +32,33 @@
         placeholder="Password"
         style="height: 50px"
       />
+      <span
+        class="error-email"
+        *ngIf="loginForm.get('password')?.errors?.minlength"
+      >
+        La contraseña debe contener como minimo 6 caracteres</span
+      >
     </div>
   </div>
+
   <div class="modal-footer">
     <div style="height: 20px"></div>
-
     <button
       type="button"
       class="modal-footer-button"
       (click)="login()"
-      [disabled]="isValid()"
-      [ngClass]="{ desabilitar: isValid() }"
+      [disabled]="!isValid()"
+      [ngClass]="{ desabilitar: !isValid() }"
     >
-      <label class="modal-footer-button-label"> Ingresar! </label>
+      <label
+        [ngClass]="!isValid() ? 'isNotValidLabel' : 'modal-footer-button-label'"
+      >
+        Ingresar!
+      </label>
     </button>
     <span
       >Has olvidado tu contraseña ? click
-      <strong (click)="seeModal()" style="cursor: pointer;">aquí</strong>
+      <strong (click)="seeModal()" style="cursor: pointer">aquí</strong>
     </span>
   </div>
 
@@ -60,14 +74,19 @@
       placeholder="Correo"
       style="height: 50px; margin-bottom: 10px"
     />
+    <span
+      class="text-danger"
+      *ngIf="recoverForm.get('emailRecover')?.errors?.pattern"
+      >Email invalido</span
+    >
 
     <button
       type="button"
       class="modal-footer-button"
       (click)="modalActive.close()"
       (click)="enviarCorreo()"
-      [disabled]="isValidEmailSend()"
-      [ngClass]="{ desabilitar: isValidEmailSend() }"
+      [disabled]="!isValidEmailSend()"
+      [ngClass]="{ desabilitar: !isValidEmailSend() }"
     >
       <label class="modal-footer-button-label"> Enviar correo </label>
     </button>
