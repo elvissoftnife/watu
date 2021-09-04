@@ -58,8 +58,8 @@ export class AgencyNavComponent implements OnInit {
 
   async suscribirme(){
     Swal.fire({
-      title: '¿Estas seguro de reservar la vacante?',
-      text: 'Para tener asegurado una vacante, es necesario realizar un pago.',
+      title: '¿Estas seguro de suscribirte?',
+      text: 'La suscripcion sera por un año por un monto de S./50.00',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si,proceder',

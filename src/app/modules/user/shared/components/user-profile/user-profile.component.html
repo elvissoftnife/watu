@@ -80,6 +80,16 @@
             placeholder="Nombre"
             formControlName="name"
           />
+          <p
+              *ngIf="
+                profileForm.controls.name.touched && profileForm.controls.name.errors
+              "
+              class="text-end text-danger"
+              style="    font-size: 15px;
+                text-align: left!important;"
+                >
+              Ingresa tu nombre.
+            </p>
         </div>
         <br />
         <div class="modal-container__personal-date__form__first-lastName">
@@ -89,6 +99,16 @@
             placeholder="Apellido Paterno"
             formControlName="lastName"
           />
+          <p
+              *ngIf="
+                profileForm.controls.lastName.touched && profileForm.controls.lastName.errors
+              "
+              class="text-end text-danger"
+              style="    font-size: 15px;
+                text-align: left!important;"
+                >
+              Ingresa tu apellido paterno.
+            </p>
         </div>
         <br />
         <div class="modal-container__personal-date__form__second-lastName">
@@ -98,6 +118,16 @@
             placeholder="Apellido Materno"
             formControlName="motherLastName"
           />
+          <p
+              *ngIf="
+                profileForm.controls.motherLastName.touched && profileForm.controls.motherLastName.errors
+              "
+              class="text-end text-danger"
+              style="    font-size: 15px;
+                text-align: left!important;"
+                >
+              Ingresa tu apellido materno.
+            </p>
         </div>
 
         <br />
@@ -112,6 +142,7 @@
       class="btn"
       (click)="saveData()"
       (click)="modalActive.close()"
+      [disabled]="profileForm.invalid"
       style="background-color: #fb4381; color: white; margin-right: 10px"
     >
       Guardar

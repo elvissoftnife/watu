@@ -56,8 +56,8 @@ export class UserNavComponent implements OnInit {
 
   async suscribirme(){
     Swal.fire({
-      title: '¿Estas seguro de reservar la vacante?',
-      text: 'Para tener asegurado una vacante, es necesario realizar un pago.',
+      title: '¿Estas seguro de suscribirte?',
+      text: 'La suscripcion sera por un año por un monto de S./25.00',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si,proceder',
@@ -66,7 +66,7 @@ export class UserNavComponent implements OnInit {
       cancelButtonColor: 'grey',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Pasarela.sendPay(5000);
+        Pasarela.sendPay(2500);
         Pasarela.listenPay(this.ejecutarServicio, this);
       }
     });

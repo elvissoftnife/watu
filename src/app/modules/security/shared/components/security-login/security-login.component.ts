@@ -115,7 +115,7 @@ export class SecurityLoginComponent {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Usuario no encontrado',
+        text: 'Credenciales incorrectas.',
       });
     }
   }

@@ -39,7 +39,7 @@
             <div class="add-sede">
                 <label for="contactoSede">Contacto</label>
                 <div class="input-group">
-                    <input id="contactoSede" type="text" class="form-control" formControlName="contactame">
+                    <input id="contactoSede" type="number" min="0" class="form-control" formControlName="contactame">
                 </div>
                 <span class="form-text text-danger" *ngIf="campoEsValido('contactame')">
                     El contacto es requerido
